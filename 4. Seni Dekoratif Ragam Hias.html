@@ -1,0 +1,2715 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seni Dekoratif: Mengenal Ragam Hias Nusantara - Kelas 4 SD</title>
+
+  <!-- Google Fonts: Fredoka & Nunito for child-friendly bouncy UI -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            fredoka: ['Fredoka', 'cursive', 'sans-serif'],
+            nunito: ['Nunito', 'sans-serif'],
+          },
+          colors: {
+            ceri: '#FF4D6D',
+            matahari: '#FFB703',
+            jeruk: '#FB8500',
+            toska: '#06D6A0',
+            samudra: '#118AB2',
+            malam: '#073B4C',
+            krim: '#FEF9EF',
+            lavender: '#8338EC'
+          },
+          boxShadow: {
+            'bouncy': '0 8px 0px rgba(0,0,0,0.18)',
+            'bouncy-sm': '0 4px 0px rgba(0,0,0,0.15)',
+            'bouncy-active': '0 2px 0px rgba(0,0,0,0.2)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Font Awesome Icons 6.4.0 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <style>
+    body {
+      font-family: 'Nunito', sans-serif;
+      background-color: #FEF9EF;
+      color: #073B4C;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4, .font-heading {
+      font-family: 'Fredoka', cursive, sans-serif;
+    }
+    .bouncy-btn {
+      transition: all 0.15s ease-in-out;
+      box-shadow: 0 6px 0 rgba(0,0,0,0.15);
+    }
+    .bouncy-btn:active {
+      transform: translateY(4px);
+      box-shadow: 0 2px 0 rgba(0,0,0,0.15);
+    }
+    .card-zoom {
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .card-zoom:hover {
+      transform: translateY(-6px) scale(1.02);
+    }
+    /* Flip Card Styles */
+    .perspective-1000 {
+      perspective: 1000px;
+    }
+    .transform-style-3d {
+      transform-style: preserve-3d;
+    }
+    .backface-hidden {
+      backface-visibility: hidden;
+    }
+    .rotate-y-180 {
+      transform: rotateY(180deg);
+    }
+    /* Custom pattern background */
+    .bg-pattern-clouds {
+      background-color: #fef9ef;
+      background-image: radial-gradient(#ffd166 1.2px, transparent 1.2px), radial-gradient(#06d6a0 1.2px, #fef9ef 1.2px);
+      background-size: 48px 48px;
+      background-position: 0 0, 24px 24px;
+    }
+    /* Sticky note fold effect */
+    .sticky-note {
+      position: relative;
+      filter: drop-shadow(2px 6px 4px rgba(0,0,0,0.12));
+    }
+    .sticky-note::after {
+      content: '';
+      position: absolute;
+      top: -8px;
+      left: 35%;
+      width: 30%;
+      height: 18px;
+      background: rgba(255,255,255,0.6);
+      transform: rotate(-2deg);
+      border-radius: 3px;
+    }
+  </style>
+</head>
+
+<body class="bg-pattern-clouds min-h-screen flex flex-col justify-between selection:bg-matahari selection:text-malam">
+
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b-4 border-amber-300 shadow-md transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+      
+      <!-- Logo & App Identity -->
+      <div class="flex items-center space-x-3 cursor-pointer" onclick="navigateTo('home')">
+        <div class="w-12 h-12 rounded-2xl bg-amber-100 border-2 border-amber-400 p-1 flex items-center justify-center shadow-sm">
+          <img src="https://i.ibb.co.com/W4zQh628/044f42bc-0679-429c-8b7d-dda1948f4b3a.png" 
+               alt="Sahabat RUMPI" 
+               class="max-h-full max-w-full object-contain"
+               onerror="this.src='https://placehold.co/80x80/FFB703/073B4C?text=RUMPI'">
+        </div>
+        <div>
+          <span class="inline-block px-2 py-0.5 text-xs font-bold bg-amber-400 text-malam rounded-full uppercase tracking-wider font-heading">
+            Kelas 4 SD • Seni Rupa
+          </span>
+          <h1 class="text-xl sm:text-2xl font-bold text-malam tracking-tight leading-none">
+            Seni Dekoratif <span class="text-ceri">Ragam Hias</span>
+          </h1>
+        </div>
+      </div>
+
+      <!-- Quick Action Controls: Hanya Suara ON/OFF dan Beranda / Menu -->
+      <div class="flex items-center space-x-2 sm:space-x-3">
+        <!-- Audio Synthesizer Toggle -->
+        <button id="audio-toggle-btn" 
+                onclick="toggleAudio()" 
+                class="bouncy-btn px-3 py-2 sm:px-4 sm:py-2 rounded-2xl bg-sky-100 border-2 border-sky-400 text-samudra font-bold flex items-center space-x-2 text-sm sm:text-base hover:bg-sky-200"
+                title="Aktifkan/Matikan Suara">
+          <i id="audio-icon" class="fa-solid fa-volume-high text-lg text-samudra"></i>
+          <span id="audio-label" class="hidden sm:inline">Suara: ON</span>
+        </button>
+
+        <!-- Home / Menu Button -->
+        <button onclick="navigateTo('home')" 
+                class="bouncy-btn px-4 py-2 rounded-2xl bg-amber-400 border-2 border-amber-500 text-malam font-bold flex items-center space-x-2 text-sm sm:text-base hover:bg-amber-300">
+          <i class="fa-solid fa-house"></i>
+          <span>Beranda / Menu</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-6 w-full flex-grow">
+
+    <!-- Notification Toast Popup -->
+    <div id="toast-modal" class="fixed top-24 right-5 z-50 transform translate-x-96 transition-all duration-300 bg-white border-4 border-amber-400 rounded-3xl p-4 shadow-2xl flex items-center space-x-3 max-w-sm pointer-events-none">
+      <div id="toast-icon-wrapper" class="w-10 h-10 rounded-2xl bg-amber-100 flex items-center justify-center text-amber-600 text-xl font-bold flex-shrink-0">
+        <i id="toast-icon" class="fa-solid fa-circle-check"></i>
+      </div>
+      <div>
+        <h4 id="toast-title" class="font-heading font-bold text-sm text-malam leading-tight">Pemberitahuan</h4>
+        <p id="toast-desc" class="text-xs text-slate-600 mt-0.5">Pesan interaktif.</p>
+      </div>
+    </div>
+
+    <section id="section-home" class="spa-section block animate-fade">
+      <!-- Hero Banner -->
+      <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-amber-300 via-orange-300 to-rose-300 p-6 sm:p-10 border-4 border-amber-400 shadow-bouncy mb-8 text-malam">
+        <div class="absolute -right-8 -bottom-10 w-48 h-48 sm:w-64 sm:h-64 opacity-20 pointer-events-none text-white">
+          <i class="fa-solid fa-shapes text-9xl"></i>
+        </div>
+        
+        <div class="max-w-2xl relative z-10">
+          <span class="inline-flex items-center gap-2 px-3 py-1 bg-white/80 backdrop-blur rounded-full text-xs font-bold text-ceri mb-3 shadow-sm font-heading">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> Pembelajaran Berdiferensiasi & Deep Learning
+          </span>
+          <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-3 text-malam font-heading leading-tight">
+            Jelajahi Pesona <br><span class="text-ceri underline decoration-wavy decoration-amber-400">Seni Ragam Hias</span>!
+          </h2>
+          <p class="text-base sm:text-lg font-semibold text-slate-800 mb-6 leading-relaxed">
+            Hai Sobat Pintar! Mari belajar bagaimana pola indah flora, fauna, geometris, dan figuratif menghiasi warisan budaya Nusantara melalui simulasi seru, game seru, dan kuis berhadiah sertifikat!
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <button onclick="navigateTo('materi')" class="bouncy-btn px-6 py-3.5 bg-ceri text-white font-extrabold rounded-2xl border-2 border-rose-600 hover:bg-rose-500 text-base flex items-center space-x-2">
+              <span>Mulai Belajar Sekarang</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            <button onclick="navigateTo('simulasi')" class="bouncy-btn px-6 py-3.5 bg-white text-malam font-extrabold rounded-2xl border-2 border-amber-400 hover:bg-amber-100 text-base flex items-center space-x-2">
+              <i class="fa-solid fa-palette text-toska"></i>
+              <span>Studio Virtual</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Interactive Menu Grid -->
+      <h3 class="text-2xl font-bold text-malam font-heading mb-4 flex items-center gap-2">
+        <i class="fa-solid fa-grid-2 text-amber-500"></i> Peta Petualangan Belajar
+      </h3>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- Card 1 -->
+        <div onclick="navigateTo('tujuan')" class="card-zoom cursor-pointer bg-white p-5 rounded-3xl border-3 border-amber-200 shadow-bouncy flex flex-col justify-between hover:border-ceri">
+          <div class="w-14 h-14 rounded-2xl bg-rose-100 border-2 border-rose-300 text-ceri flex items-center justify-center text-2xl mb-3">
+            <i class="fa-solid fa-bullseye"></i>
+          </div>
+          <div>
+            <h4 class="font-heading font-bold text-lg text-malam">Tujuan Belajar</h4>
+            <p class="text-xs text-slate-600 mt-1 font-semibold">Ketahui kemampuan keren apa yang akan kamu kuasai hari ini!</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-ceri font-bold text-xs">
+            <span>Buka Tujuan</span>
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div onclick="navigateTo('pemantik')" class="card-zoom cursor-pointer bg-white p-5 rounded-3xl border-3 border-amber-200 shadow-bouncy flex flex-col justify-between hover:border-matahari">
+          <div class="w-14 h-14 rounded-2xl bg-amber-100 border-2 border-amber-300 text-matahari flex items-center justify-center text-2xl mb-3">
+            <i class="fa-solid fa-lightbulb"></i>
+          </div>
+          <div>
+            <h4 class="font-heading font-bold text-lg text-malam">Tanya Pemantik</h4>
+            <p class="text-xs text-slate-600 mt-1 font-semibold">Tebak fenomena seru lewat kartu berputar ajaib!</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-jeruk font-bold text-xs">
+            <span>Buka Kartu</span>
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div onclick="navigateTo('materi')" class="card-zoom cursor-pointer bg-white p-5 rounded-3xl border-3 border-amber-200 shadow-bouncy flex flex-col justify-between hover:border-samudra">
+          <div class="w-14 h-14 rounded-2xl bg-sky-100 border-2 border-sky-300 text-samudra flex items-center justify-center text-2xl mb-3">
+            <i class="fa-solid fa-shapes"></i>
+          </div>
+          <div>
+            <h4 class="font-heading font-bold text-lg text-malam">Materi Interaktif</h4>
+            <p class="text-xs text-slate-600 mt-1 font-semibold">Kupas 4 jenis motif ragam hias dan 3 fungsi pentingnya.</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-samudra font-bold text-xs">
+            <span>Baca Visual</span>
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div onclick="navigateTo('simulasi')" class="card-zoom cursor-pointer bg-white p-5 rounded-3xl border-3 border-amber-200 shadow-bouncy flex flex-col justify-between hover:border-toska">
+          <div class="w-14 h-14 rounded-2xl bg-emerald-100 border-2 border-emerald-300 text-toska flex items-center justify-center text-2xl mb-3">
+            <i class="fa-solid fa-palette"></i>
+          </div>
+          <div>
+            <h4 class="font-heading font-bold text-lg text-malam">Studio Ragam Hias</h4>
+            <p class="text-xs text-slate-600 mt-1 font-semibold">Hiasi vas, batik, dan perisai dengan cap motif buatanmu!</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-toska font-bold text-xs">
+            <span>Coba Eksperimen</span>
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div onclick="navigateTo('kuis')" class="card-zoom cursor-pointer bg-white p-5 rounded-3xl border-3 border-amber-200 shadow-bouncy flex flex-col justify-between hover:border-jeruk">
+          <div class="w-14 h-14 rounded-2xl bg-orange-100 border-2 border-orange-300 text-jeruk flex items-center justify-center text-2xl mb-3">
+            <i class="fa-solid fa-trophy"></i>
+          </div>
+          <div>
+            <h4 class="font-heading font-bold text-lg text-malam">Kuis 3 Level (30 Soal)</h4>
+            <p class="text-xs text-slate-600 mt-1 font-semibold">Tantangan Mudah, Sedang, Sulit berhadiah Sertifikat Juara!</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-jeruk font-bold text-xs">
+            <span>Uji Nyali</span>
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div onclick="navigateTo('games')" class="card-zoom cursor-pointer bg-white p-5 rounded-3xl border-3 border-amber-200 shadow-bouncy flex flex-col justify-between hover:border-lavender">
+          <div class="w-14 h-14 rounded-2xl bg-purple-100 border-2 border-purple-300 text-lavender flex items-center justify-center text-2xl mb-3">
+            <i class="fa-solid fa-puzzle-piece"></i>
+          </div>
+          <div>
+            <h4 class="font-heading font-bold text-lg text-malam">Game Edukasi</h4>
+            <p class="text-xs text-slate-600 mt-1 font-semibold">Pilah motif & kartu memori interaktif serba sentuh!</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-lavender font-bold text-xs">
+            <span>Mainkan</span>
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+        </div>
+
+        <!-- Card 7 -->
+        <div onclick="navigateTo('kesimpulan')" class="card-zoom cursor-pointer bg-white p-5 rounded-3xl border-3 border-amber-200 shadow-bouncy flex flex-col justify-between hover:border-amber-400">
+          <div class="w-14 h-14 rounded-2xl bg-amber-100 border-2 border-amber-300 text-amber-600 flex items-center justify-center text-2xl mb-3">
+            <i class="fa-solid fa-book-bookmark"></i>
+          </div>
+          <div>
+            <h4 class="font-heading font-bold text-lg text-malam">Rangkuman Materi</h4>
+            <p class="text-xs text-slate-600 mt-1 font-semibold">Peta konsep visual mudah diingat untuk persiapan ujian.</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-amber-600 font-bold text-xs">
+            <span>Lihat Rangkuman</span>
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+        </div>
+
+        <!-- Card 8 -->
+        <div onclick="navigateTo('refleksi')" class="card-zoom cursor-pointer bg-white p-5 rounded-3xl border-3 border-amber-200 shadow-bouncy flex flex-col justify-between hover:border-rose-400">
+          <div class="w-14 h-14 rounded-2xl bg-rose-100 border-2 border-rose-300 text-rose-500 flex items-center justify-center text-2xl mb-3">
+            <i class="fa-solid fa-note-sticky"></i>
+          </div>
+          <div>
+            <h4 class="font-heading font-bold text-lg text-malam">Papan Refleksi</h4>
+            <p class="text-xs text-slate-600 mt-1 font-semibold">Tuliskan pengalaman belajarmu di sticky note digital!</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-rose-500 font-bold text-xs">
+            <span>Tulis Catatan</span>
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="section-tujuan" class="spa-section hidden animate-fade">
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border-4 border-amber-300 shadow-bouncy mb-6">
+        <div class="flex items-center space-x-3 mb-6">
+          <span class="p-3 bg-rose-100 text-ceri rounded-2xl text-2xl border-2 border-rose-300">
+            <i class="fa-solid fa-bullseye"></i>
+          </span>
+          <div>
+            <h2 class="text-2xl sm:text-3xl font-bold font-heading text-malam">Tujuan Pembelajaran (Learning Goals)</h2>
+            <p class="text-sm text-slate-600">Disusun berdasarkan Kurikulum Merdeka Fase B (Kelas 4 SD)</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
+          <!-- TP 1 -->
+          <div class="p-5 rounded-2xl bg-sky-50 border-2 border-sky-300 flex flex-col justify-between shadow-sm">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-sky-200 text-samudra flex items-center justify-center font-bold text-lg mb-3">
+                1
+              </div>
+              <h3 class="font-heading font-bold text-lg text-samudra mb-2">Memahami Konsep & 4 Jenis Motif</h3>
+              <p class="text-sm text-slate-700 leading-relaxed">
+                Peserta didik mampu menjelaskan pengertian ragam hias (ornamen dekoratif) serta mengidentifikasi 4 jenis motif dasarnya: <strong>flora (tumbuhan)</strong>, <strong>fauna (hewan)</strong>, <strong>geometris</strong>, dan <strong>figuratif (manusia)</strong>.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-sky-200 text-xs font-bold text-sky-700">
+              <i class="fa-solid fa-check-circle mr-1"></i> Pengetahuan Dasar (C2)
+            </div>
+          </div>
+
+          <!-- TP 2 -->
+          <div class="p-5 rounded-2xl bg-amber-50 border-2 border-amber-300 flex flex-col justify-between shadow-sm">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-amber-200 text-jeruk flex items-center justify-center font-bold text-lg mb-3">
+                2
+              </div>
+              <h3 class="font-heading font-bold text-lg text-jeruk mb-2">Menganalisis 3 Fungsi Ragam Hias</h3>
+              <p class="text-sm text-slate-700 leading-relaxed">
+                Peserta didik mampu membedakan dan menganalisis peran ragam hias pada benda di sekitarnya, meliputi fungsi <strong>estetis (keindahan)</strong>, <strong>simbolis (makna adat/spiritual)</strong>, dan <strong>konstruktif (kekuatan bangunan)</strong>.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-amber-200 text-xs font-bold text-amber-800">
+              <i class="fa-solid fa-check-circle mr-1"></i> Pemahaman Analitis (C4)
+            </div>
+          </div>
+
+          <!-- TP 3 -->
+          <div class="p-5 rounded-2xl bg-emerald-50 border-2 border-emerald-300 flex flex-col justify-between shadow-sm">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-emerald-200 text-toska flex items-center justify-center font-bold text-lg mb-3">
+                3
+              </div>
+              <h3 class="font-heading font-bold text-lg text-emerald-800 mb-2">Kreativitas & Apresiasi Budaya</h3>
+              <p class="text-sm text-slate-700 leading-relaxed">
+                Peserta didik mampu merancang pola ragam hias dekoratif secara mandiri dengan teknik stilisasi (penyederhanaan bentuk) serta bangga melestarikan kearifan lokal warisan Nusantara.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-emerald-200 text-xs font-bold text-emerald-800">
+              <i class="fa-solid fa-check-circle mr-1"></i> Keterampilan Berkreasi (P3)
+            </div>
+          </div>
+        </div>
+
+        <!-- Connection Box -->
+        <div class="bg-gradient-to-r from-amber-100 to-orange-100 p-5 rounded-2xl border-2 border-amber-300 flex items-start space-x-4">
+          <div class="text-3xl text-jeruk mt-1"><i class="fa-solid fa-heart-pulse"></i></div>
+          <div>
+            <h4 class="font-heading font-bold text-base text-malam">Mengapa materi ini penting untukmu?</h4>
+            <p class="text-sm text-slate-700 mt-1">
+              Batik yang kamu pakai pada hari Kamis, ukiran rumah adat kakek di kampung, atau hiasan pada piring keramik ibumu semuanya menggunakan ilmu <em>Ragam Hias</em>. Dengan memahaminya, kamu bisa membuat barang biasa menjadi sangat indah dan bernilai tinggi!
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="section-pemantik" class="spa-section hidden animate-fade">
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border-4 border-amber-300 shadow-bouncy mb-6">
+        <div class="flex items-center space-x-3 mb-4">
+          <span class="p-3 bg-amber-100 text-matahari rounded-2xl text-2xl border-2 border-amber-300">
+            <i class="fa-solid fa-lightbulb"></i>
+          </span>
+          <div>
+            <h2 class="text-2xl sm:text-3xl font-bold font-heading text-malam">Pertanyaan Pemantik (Teka-Teki Penasaran)</h2>
+            <p class="text-sm text-slate-600">Klik atau sentuh kartu di bawah ini untuk membalikkan dan menemukan rahasianya!</p>
+          </div>
+        </div>
+
+        <!-- Mindfulness Prompt -->
+        <div class="mb-6 p-4 bg-sky-50 border-2 border-sky-300 rounded-2xl flex items-center space-x-3 text-sm text-samudra font-semibold">
+          <i class="fa-solid fa-spa text-2xl text-toska animate-bounce"></i>
+          <span>Ayo Tarik Napas Dulu: Pejamkan matamu sejenak 3 detik... Bayangkan baju batik paling indah yang pernah kamu lihat. Pola apa yang ada di sana? Sekarang, mari kita pecahkan!</span>
+        </div>
+
+        <!-- Flip Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          <!-- Card 1 -->
+          <div class="perspective-1000 h-80">
+            <div id="flip-card-1" onclick="flipCard('flip-card-1')" class="relative w-full h-full transform-style-3d transition-transform duration-700 cursor-pointer">
+              
+              <!-- Front Side -->
+              <div class="absolute inset-0 backface-hidden bg-gradient-to-br from-amber-400 to-orange-400 rounded-3xl p-6 text-white flex flex-col justify-between border-4 border-amber-500 shadow-bouncy">
+                <div class="flex justify-between items-center">
+                  <span class="px-3 py-1 bg-white/30 backdrop-blur rounded-full text-xs font-bold font-heading">
+                    Kartu Pemantik #1
+                  </span>
+                  <i class="fa-solid fa-rotate text-xl text-white opacity-80 animate-spin"></i>
+                </div>
+                <div class="text-center my-auto">
+                  <div class="w-16 h-16 mx-auto mb-3 bg-white/20 rounded-full flex items-center justify-center text-3xl">
+                    <i class="fa-solid fa-shirt"></i>
+                  </div>
+                  <h3 class="text-xl sm:text-2xl font-bold font-heading">Mengapa Kain Batik Tidak Pernah Polos?</h3>
+                  <p class="text-sm mt-2 font-medium opacity-95">Apa bedanya kain putih biasa dengan kain batik bermotif mega mendung atau dedaunan?</p>
+                </div>
+                <div class="text-center text-xs font-bold tracking-wider uppercase bg-white/20 py-2 rounded-xl">
+                  👉 Sentuh untuk Membalik Jawaban!
+                </div>
+              </div>
+
+              <!-- Back Side -->
+              <div class="absolute inset-0 backface-hidden rotate-y-180 bg-white rounded-3xl p-6 text-malam flex flex-col justify-between border-4 border-orange-400 shadow-bouncy">
+                <div>
+                  <div class="flex items-center space-x-2 text-ceri font-bold text-sm mb-2">
+                    <i class="fa-solid fa-check-double"></i>
+                    <span>Rahasia Keindahan & Nilai Seni</span>
+                  </div>
+                  <h4 class="font-heading font-bold text-lg text-malam mb-2">Karena Ada Ragam Hias (Ornamen Dekoratif)!</h4>
+                  <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                    Kain putih polos terlihat biasa saja. Tetapi ketika seniman melukiskan <strong>ragam hias</strong> berupa lengkungan daun, burung merak, atau awan, kain tersebut menjadi:
+                  </p>
+                  <ul class="text-xs sm:text-sm text-slate-700 mt-2 space-y-1.5 list-disc list-inside">
+                    <li><strong>Mata terpukau:</strong> Memiliki daya tarik visual (Fungsi Estetis).</li>
+                    <li><strong>Penuh Makna:</strong> Menyimpan doa keberkahan dan keberanian dari nenek moyang (Fungsi Simbolis).</li>
+                  </ul>
+                </div>
+                <div class="text-center text-xs font-bold text-orange-600 bg-orange-50 py-2 rounded-xl border border-orange-200">
+                  <i class="fa-solid fa-rotate-left mr-1"></i> Klik lagi untuk membalik kartu
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="perspective-1000 h-80">
+            <div id="flip-card-2" onclick="flipCard('flip-card-2')" class="relative w-full h-full transform-style-3d transition-transform duration-700 cursor-pointer">
+              
+              <!-- Front Side -->
+              <div class="absolute inset-0 backface-hidden bg-gradient-to-br from-teal-400 to-emerald-500 rounded-3xl p-6 text-white flex flex-col justify-between border-4 border-emerald-600 shadow-bouncy">
+                <div class="flex justify-between items-center">
+                  <span class="px-3 py-1 bg-white/30 backdrop-blur rounded-full text-xs font-bold font-heading">
+                    Kartu Pemantik #2
+                  </span>
+                  <i class="fa-solid fa-rotate text-xl text-white opacity-80 animate-spin"></i>
+                </div>
+                <div class="text-center my-auto">
+                  <div class="w-16 h-16 mx-auto mb-3 bg-white/20 rounded-full flex items-center justify-center text-3xl">
+                    <i class="fa-solid fa-tree"></i>
+                  </div>
+                  <h3 class="text-xl sm:text-2xl font-bold font-heading">Bolehkah Menggambar Daun Jadi Bentuk Segitiga Berulang?</h3>
+                  <p class="text-sm mt-2 font-medium opacity-95">Apakah gambar dekoratif harus persis 100% sama dengan pohon aslinya di taman sekolah?</p>
+                </div>
+                <div class="text-center text-xs font-bold tracking-wider uppercase bg-white/20 py-2 rounded-xl">
+                  👉 Sentuh untuk Membalik Jawaban!
+                </div>
+              </div>
+
+              <!-- Back Side -->
+              <div class="absolute inset-0 backface-hidden rotate-y-180 bg-white rounded-3xl p-6 text-malam flex flex-col justify-between border-4 border-emerald-500 shadow-bouncy">
+                <div>
+                  <div class="flex items-center space-x-2 text-toska font-bold text-sm mb-2">
+                    <i class="fa-solid fa-wand-magic"></i>
+                    <span>Konsep Stilisasi & Deformasi</span>
+                  </div>
+                  <h4 class="font-heading font-bold text-lg text-malam mb-2">Tentu Boleh Banget! Itu Namanya Stilisasi!</h4>
+                  <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                    Dalam Seni Dekoratif, kita tidak sedang menggambar ilmiah seperti biologi. Kita melakukan <strong>stilisasi</strong> (menggubah atau menyederhanakan bentuk nyata menjadi pola hias yang indah).
+                  </p>
+                  <p class="text-xs sm:text-sm text-slate-700 mt-2 bg-emerald-50 p-2.5 rounded-xl border border-emerald-200">
+                    💡 Contohnya: Bunga melati diubah menjadi pola bintang geometris yang berulang-ulang tanpa menghilangkan ciri khas bunganya!
+                  </p>
+                </div>
+                <div class="text-center text-xs font-bold text-emerald-700 bg-emerald-50 py-2 rounded-xl border border-emerald-200">
+                  <i class="fa-solid fa-rotate-left mr-1"></i> Klik lagi untuk membalik kartu
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="section-materi" class="spa-section hidden animate-fade">
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border-4 border-amber-300 shadow-bouncy mb-6">
+        
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b-2 border-amber-200 gap-4 mb-6">
+          <div class="flex items-center space-x-3">
+            <span class="p-3 bg-sky-100 text-samudra rounded-2xl text-2xl border-2 border-sky-300">
+              <i class="fa-solid fa-book-open"></i>
+            </span>
+            <div>
+              <h2 class="text-2xl sm:text-3xl font-bold font-heading text-malam">Materi Ragam Hias</h2>
+              <p class="text-sm text-slate-600">Pelajari konsep, jenis motif, dan fungsinya lewat tab interaktif</p>
+            </div>
+          </div>
+
+          <!-- Internal Sub-tab Navigation Buttons -->
+          <div class="flex p-1 bg-amber-100 rounded-2xl border border-amber-300 space-x-1">
+            <button onclick="switchMateriTab('definisi')" id="tab-btn-definisi" class="materi-tab-btn active px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold font-heading transition bg-white text-ceri shadow-sm">
+              <i class="fa-solid fa-info-circle mr-1"></i> Pengertian
+            </button>
+            <button onclick="switchMateriTab('jenis')" id="tab-btn-jenis" class="materi-tab-btn px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold font-heading transition text-slate-600 hover:text-ceri">
+              <i class="fa-solid fa-shapes mr-1"></i> 4 Jenis Motif
+            </button>
+            <button onclick="switchMateriTab('fungsi')" id="tab-btn-fungsi" class="materi-tab-btn px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold font-heading transition text-slate-600 hover:text-ceri">
+              <i class="fa-solid fa-gear mr-1"></i> 3 Fungsi Utama
+            </button>
+          </div>
+        </div>
+
+        <!-- TAB CONTENT 1: PENGERTIAN -->
+        <div id="materi-subtab-definisi" class="materi-subtab block">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+            <div>
+              <span class="inline-block px-3 py-1 bg-ceri text-white rounded-full text-xs font-bold mb-3 font-heading">
+                Konsep Inti
+              </span>
+              <h3 class="text-2xl font-bold font-heading text-malam mb-3">Apa itu Seni Ragam Hias?</h3>
+              <p class="text-slate-700 leading-relaxed text-sm sm:text-base mb-4">
+                <strong>Ragam Hias (Ornamen)</strong> berasal dari kata bahasa Yunani <em>"ornare"</em> yang artinya menghias atau memperindah. Ragam hias adalah bentuk dasar hiasan berupa pola berulang yang biasanya diterapkan pada karya seni atau kerajinan tangan untuk mengisi bidang yang kosong agar terlihat lebih indah dan bermakna.
+              </p>
+              
+              <div class="space-y-3">
+                <div class="flex items-start space-x-3 p-3 bg-amber-50 rounded-2xl border border-amber-200">
+                  <i class="fa-solid fa-paint-brush text-jeruk text-xl mt-1"></i>
+                  <div>
+                    <h4 class="font-bold text-sm text-malam">Seni Dekoratif</h4>
+                    <p class="text-xs text-slate-600">Seni rupa yang bertujuan menghias benda pakai (guci, kain, ukiran pintu) agar memikat mata.</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start space-x-3 p-3 bg-sky-50 rounded-2xl border border-sky-200">
+                  <i class="fa-solid fa-clone text-samudra text-xl mt-1"></i>
+                  <div>
+                    <h4 class="font-bold text-sm text-malam">Pola Repetisi (Berulang)</h4>
+                    <p class="text-xs text-slate-600">Motif disusun secara berulang, seimbang, dan berirama rapi.</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start space-x-3 p-3 bg-emerald-50 rounded-2xl border border-emerald-200">
+                  <i class="fa-solid fa-wand-magic-sparkles text-toska text-xl mt-1"></i>
+                  <div>
+                    <h4 class="font-bold text-sm text-malam">Stilisasi Bentuk</h4>
+                    <p class="text-xs text-slate-600">Menyederhanakan obyek nyata dari alam tanpa menghilangkan karakter aslinya.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Visual Graphic / Interactive SVG Pattern Illustration -->
+            <div class="bg-gradient-to-br from-amber-100 to-rose-100 p-6 rounded-3xl border-3 border-amber-300 text-center flex flex-col items-center justify-center">
+              <div class="text-xs font-bold text-slate-600 mb-2 font-heading uppercase tracking-wide">
+                Contoh Pola Dasar Ragam Hias Berulang
+              </div>
+              <svg class="w-full max-w-sm h-48 rounded-2xl bg-white p-2 shadow-inner border-2 border-amber-200" viewBox="0 0 400 200">
+                <!-- Decorative Repeated Kawung / Floral Pattern -->
+                <defs>
+                  <pattern id="kawungDemo" width="80" height="80" patternUnits="userSpaceOnUse">
+                    <rect width="80" height="80" fill="#fff9ec" />
+                    <!-- Ellipses -->
+                    <ellipse cx="40" cy="20" rx="16" ry="8" fill="#FB8500" opacity="0.85"/>
+                    <ellipse cx="40" cy="60" rx="16" ry="8" fill="#FB8500" opacity="0.85"/>
+                    <ellipse cx="20" cy="40" rx="8" ry="16" fill="#06D6A0" opacity="0.85"/>
+                    <ellipse cx="60" cy="40" rx="8" ry="16" fill="#06D6A0" opacity="0.85"/>
+                    <circle cx="40" cy="40" r="6" fill="#FF4D6D" />
+                    <circle cx="0" cy="0" r="4" fill="#073B4C" />
+                    <circle cx="80" cy="0" r="4" fill="#073B4C" />
+                    <circle cx="0" cy="80" r="4" fill="#073B4C" />
+                    <circle cx="80" cy="80" r="4" fill="#073B4C" />
+                  </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#kawungDemo)" rx="12"/>
+              </svg>
+              <p class="text-xs text-slate-600 mt-3 italic font-semibold">
+                "Pola Kawung": Simbol buah kelapa atau kolang-kaling yang melambangkan kesucian hati dan ketulusan.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB CONTENT 2: 4 JENIS MOTIF -->
+        <div id="materi-subtab-jenis" class="materi-subtab hidden">
+          <div class="mb-4">
+            <h3 class="text-xl sm:text-2xl font-bold font-heading text-malam">4 Jenis Motif Ragam Hias Nusantara</h3>
+            <p class="text-sm text-slate-600">Klik setiap kartu untuk melihat penjelasan detail dan contoh khas daerahnya!</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            
+            <!-- Motif Flora -->
+            <div class="bg-emerald-50 rounded-2xl p-4 border-2 border-emerald-300 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <span class="w-10 h-10 rounded-xl bg-emerald-200 text-emerald-800 flex items-center justify-center text-xl font-bold">
+                    <i class="fa-solid fa-leaf"></i>
+                  </span>
+                  <span class="text-xs font-bold text-emerald-800 bg-emerald-100 px-2.5 py-1 rounded-full uppercase">Tumbuhan</span>
+                </div>
+                <h4 class="font-heading font-bold text-base text-emerald-900 mb-1">1. Ragam Hias Flora</h4>
+                <p class="text-xs text-slate-700 leading-relaxed mb-3">
+                  Mengambil inspirasi dari bentuk dedaunan, sulur akar, bunga, dan buah-buahan yang digubah indah.
+                </p>
+                <div class="bg-white p-2.5 rounded-xl border border-emerald-200 text-xs text-slate-600 space-y-1">
+                  <div><strong>Contoh:</strong> Motif Sulur Jepara, Bunga Teratai, Daun Sirih.</div>
+                  <div><strong>Kerap Ada Pada:</strong> Ukiran kayu Jawa, kain songket Minangkabau.</div>
+                </div>
+              </div>
+              <div class="mt-4 pt-2 border-t border-emerald-200 text-center">
+                <span class="text-xs font-bold text-emerald-700">🌱 Melambangkan kesuburan</span>
+              </div>
+            </div>
+
+            <!-- Motif Fauna -->
+            <div class="bg-amber-50 rounded-2xl p-4 border-2 border-amber-300 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <span class="w-10 h-10 rounded-xl bg-amber-200 text-amber-800 flex items-center justify-center text-xl font-bold">
+                    <i class="fa-solid fa-feather-pointed"></i>
+                  </span>
+                  <span class="text-xs font-bold text-amber-800 bg-amber-100 px-2.5 py-1 rounded-full uppercase">Hewan</span>
+                </div>
+                <h4 class="font-heading font-bold text-base text-amber-900 mb-1">2. Ragam Hias Fauna</h4>
+                <p class="text-xs text-slate-700 leading-relaxed mb-3">
+                  Menggubah bentuk satwa seperti burung garuda, ikan, kupu-kupu, naga, kijang, dan gajah.
+                </p>
+                <div class="bg-white p-2.5 rounded-xl border border-amber-200 text-xs text-slate-600 space-y-1">
+                  <div><strong>Contoh:</strong> Burung Cendrawasih Papua, Kerbau Pa'tedong Toraja.</div>
+                  <div><strong>Kerap Ada Pada:</strong> Batik Cirebon, kain Tenun Ikat NTT.</div>
+                </div>
+              </div>
+              <div class="mt-4 pt-2 border-t border-amber-200 text-center">
+                <span class="text-xs font-bold text-amber-700">🦅 Melambangkan kekuatan</span>
+              </div>
+            </div>
+
+            <!-- Motif Geometris -->
+            <div class="bg-sky-50 rounded-2xl p-4 border-2 border-sky-300 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <span class="w-10 h-10 rounded-xl bg-sky-200 text-sky-800 flex items-center justify-center text-xl font-bold">
+                    <i class="fa-solid fa-draw-polygon"></i>
+                  </span>
+                  <span class="text-xs font-bold text-sky-800 bg-sky-100 px-2.5 py-1 rounded-full uppercase">Bentuk Ukur</span>
+                </div>
+                <h4 class="font-heading font-bold text-base text-sky-900 mb-1">3. Ragam Hias Geometris</h4>
+                <p class="text-xs text-slate-700 leading-relaxed mb-3">
+                  Pola beraturan berbasis garis lurus, zigzag, lingkaran, belah ketupat, pilin berputar, atau meander.
+                </p>
+                <div class="bg-white p-2.5 rounded-xl border border-sky-200 text-xs text-slate-600 space-y-1">
+                  <div><strong>Contoh:</strong> Motif Kawung, Parang Rusak, Tumpal (Segitiga).</div>
+                  <div><strong>Kerap Ada Pada:</strong> Tenun Toraja, kain tapis Lampung, anyaman bambu.</div>
+                </div>
+              </div>
+              <div class="mt-4 pt-2 border-t border-sky-200 text-center">
+                <span class="text-xs font-bold text-sky-700">📐 Ragam hias tertua</span>
+              </div>
+            </div>
+
+            <!-- Motif Figuratif -->
+            <div class="bg-rose-50 rounded-2xl p-4 border-2 border-rose-300 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <span class="w-10 h-10 rounded-xl bg-rose-200 text-rose-800 flex items-center justify-center text-xl font-bold">
+                    <i class="fa-solid fa-person"></i>
+                  </span>
+                  <span class="text-xs font-bold text-rose-800 bg-rose-100 px-2.5 py-1 rounded-full uppercase">Manusia</span>
+                </div>
+                <h4 class="font-heading font-bold text-base text-rose-900 mb-1">4. Ragam Hias Figuratif</h4>
+                <p class="text-xs text-slate-700 leading-relaxed mb-3">
+                  Bentuk hiasan yang meniru figur manusia, seperti wajah topeng, prajurit adat, atau nenek moyang.
+                </p>
+                <div class="bg-white p-2.5 rounded-xl border border-rose-200 text-xs text-slate-600 space-y-1">
+                  <div><strong>Contoh:</strong> Patung & ukiran kayu Asmat Papua, figur penari Bali.</div>
+                  <div><strong>Kerap Ada Pada:</strong> Perisai perang suku Dayak, tiang totem adat.</div>
+                </div>
+              </div>
+              <div class="mt-4 pt-2 border-t border-rose-200 text-center">
+                <span class="text-xs font-bold text-rose-700">🗿 Lambang penghormatan leluhur</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- TAB CONTENT 3: 3 FUNGSI UTAMA -->
+        <div id="materi-subtab-fungsi" class="materi-subtab hidden">
+          <div class="mb-4">
+            <h3 class="text-xl sm:text-2xl font-bold font-heading text-malam">3 Fungsi Utama Ragam Hias</h3>
+            <p class="text-sm text-slate-600">Ragam hias tidak hanya sekadar gambar biasa, ia memiliki 3 fungsi besar dalam kehidupan manusia:</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <!-- Fungsi 1: Estetis -->
+            <div class="bg-white p-5 rounded-2xl border-3 border-amber-300 shadow-sm flex flex-col justify-between">
+              <div>
+                <div class="w-12 h-12 rounded-xl bg-amber-100 text-jeruk flex items-center justify-center text-2xl mb-3">
+                  <i class="fa-solid fa-eye"></i>
+                </div>
+                <h4 class="font-heading font-bold text-lg text-malam">1. Fungsi Estetis (Keindahan)</h4>
+                <p class="text-xs sm:text-sm text-slate-700 mt-2 leading-relaxed">
+                  Fungsi yang murni bertujuan untuk <strong>mempercantik tampilan</strong> fisik benda agar sedap dipandang, bernilai seni tinggi, dan menarik perhatian pembeli atau penonton.
+                </p>
+                <div class="mt-3 p-3 bg-amber-50 rounded-xl border border-amber-200 text-xs text-slate-600">
+                  <strong>Contoh:</strong> Hiasan bunga melati pada taplak meja makan dan lukisan batik di sarung bantal.
+                </div>
+              </div>
+              <div class="mt-4 text-xs font-bold text-jeruk">
+                ✨ Fokus: Kenyamanan Mata & Nilai Jual
+              </div>
+            </div>
+
+            <!-- Fungsi 2: Simbolis -->
+            <div class="bg-white p-5 rounded-2xl border-3 border-sky-300 shadow-sm flex flex-col justify-between">
+              <div>
+                <div class="w-12 h-12 rounded-xl bg-sky-100 text-samudra flex items-center justify-center text-2xl mb-3">
+                  <i class="fa-solid fa-landmark"></i>
+                </div>
+                <h4 class="font-heading font-bold text-lg text-malam">2. Fungsi Simbolis (Makna Sakral)</h4>
+                <p class="text-xs sm:text-sm text-slate-700 mt-2 leading-relaxed">
+                  Fungsi yang menyimpan <strong>pesan, filosofi, doa, nilai norma, atau kedudukan status sosial</strong> dalam masyarakat adat tertentu.
+                </p>
+                <div class="mt-3 p-3 bg-sky-50 rounded-xl border border-sky-200 text-xs text-slate-600">
+                  <strong>Contoh:</strong> Motif Batik <em>Parang Rusak</em> dulunya hanya boleh dipakai keluarga raja Mataram karena melambangkan kesatria pantang menyerah.
+                </div>
+              </div>
+              <div class="mt-4 text-xs font-bold text-samudra">
+                📜 Fokus: Doa, Adat & Filosofi Luhur
+              </div>
+            </div>
+
+            <!-- Fungsi 3: Konstruktif -->
+            <div class="bg-white p-5 rounded-2xl border-3 border-rose-300 shadow-sm flex flex-col justify-between">
+              <div>
+                <div class="w-12 h-12 rounded-xl bg-rose-100 text-ceri flex items-center justify-center text-2xl mb-3">
+                  <i class="fa-solid fa-hammer"></i>
+                </div>
+                <h4 class="font-heading font-bold text-lg text-malam">3. Fungsi Konstruktif (Kekuatan Fisik)</h4>
+                <p class="text-xs sm:text-sm text-slate-700 mt-2 leading-relaxed">
+                  Hiasan yang sekaligus berfungsi sebagai <strong>bagian penopang, penyambung, penguat struktur</strong> bangunan atau benda pakai.
+                </p>
+                <div class="mt-3 p-3 bg-rose-50 rounded-xl border border-rose-200 text-xs text-slate-600">
+                  <strong>Contoh:</strong> Tiang penyangga rumah adat Joglo yang diukir indah, atau ornamen paku keling pada pintu benteng kuno.
+                </div>
+              </div>
+              <div class="mt-4 text-xs font-bold text-ceri">
+                🏛️ Fokus: Mempercantik Sekaligus Memperkokoh
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="section-simulasi" class="spa-section hidden animate-fade">
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border-4 border-amber-300 shadow-bouncy mb-6">
+        
+        <div class="flex items-center space-x-3 mb-4">
+          <span class="p-3 bg-emerald-100 text-toska rounded-2xl text-2xl border-2 border-emerald-300">
+            <i class="fa-solid fa-palette"></i>
+          </span>
+          <div>
+            <h2 class="text-2xl sm:text-3xl font-bold font-heading text-malam">Studio Ragam Hias Virtual</h2>
+            <p class="text-sm text-slate-600">Pilih media benda, stempel motif dekoratif favoritmu, dan susun pola berulang yang indah!</p>
+          </div>
+        </div>
+
+        <!-- Simulation Grid: Control Panel + Live Interactive Canvas -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          
+          <!-- Controls Panel (5 Cols) -->
+          <div class="lg:col-span-5 bg-amber-50 p-5 rounded-2xl border-2 border-amber-300 flex flex-col justify-between space-y-4">
+            
+            <!-- Step 1: Select Canvas Target -->
+            <div>
+              <label class="block text-xs font-bold text-malam font-heading uppercase mb-2">
+                1. Pilih Media Benda Nyata:
+              </label>
+              <div class="grid grid-cols-3 gap-2">
+                <button onclick="changeStudioTarget('kain')" id="target-btn-kain" class="target-btn active p-2.5 rounded-xl border-2 border-amber-400 bg-white font-bold text-xs flex flex-col items-center">
+                  <i class="fa-solid fa-scroll text-amber-500 text-lg mb-1"></i>
+                  <span>Kain Batik</span>
+                </button>
+                <button onclick="changeStudioTarget('vas')" id="target-btn-vas" class="target-btn p-2.5 rounded-xl border-2 border-slate-200 bg-white font-bold text-xs flex flex-col items-center hover:border-amber-300">
+                  <i class="fa-solid fa-wine-bottle text-samudra text-lg mb-1"></i>
+                  <span>Guci Keramik</span>
+                </button>
+                <button onclick="changeStudioTarget('perisai')" id="target-btn-perisai" class="target-btn p-2.5 rounded-xl border-2 border-slate-200 bg-white font-bold text-xs flex flex-col items-center hover:border-amber-300">
+                  <i class="fa-solid fa-shield-halved text-ceri text-lg mb-1"></i>
+                  <span>Perisai Adat</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 2: Choose Decorative Motif Stamp -->
+            <div>
+              <label class="block text-xs font-bold text-malam font-heading uppercase mb-2">
+                2. Pilih Cap Stempel Motif (4 Kategori):
+              </label>
+              <div class="grid grid-cols-4 gap-2 text-center text-xs">
+                <!-- Flora -->
+                <button onclick="selectStamp('flora_daun', 'Flora: Daun Melengkung')" id="stamp-flora_daun" class="stamp-btn active p-2 rounded-xl bg-white border-2 border-emerald-400 font-bold hover:scale-105 transition">
+                  <i class="fa-solid fa-leaf text-toska text-lg block mb-1"></i>
+                  <span>Daun</span>
+                </button>
+                <button onclick="selectStamp('flora_bunga', 'Flora: Bunga Melati')" id="stamp-flora_bunga" class="stamp-btn p-2 rounded-xl bg-white border-2 border-slate-200 font-bold hover:scale-105 transition">
+                  <i class="fa-solid fa-spa text-emerald-600 text-lg block mb-1"></i>
+                  <span>Bunga</span>
+                </button>
+                <!-- Fauna -->
+                <button onclick="selectStamp('fauna_burung', 'Fauna: Burung Enggang')" id="stamp-fauna_burung" class="stamp-btn p-2 rounded-xl bg-white border-2 border-slate-200 font-bold hover:scale-105 transition">
+                  <i class="fa-solid fa-dove text-jeruk text-lg block mb-1"></i>
+                  <span>Burung</span>
+                </button>
+                <button onclick="selectStamp('fauna_ikan', 'Fauna: Ikan Laut')" id="stamp-fauna_ikan" class="stamp-btn p-2 rounded-xl bg-white border-2 border-slate-200 font-bold hover:scale-105 transition">
+                  <i class="fa-solid fa-fish text-samudra text-lg block mb-1"></i>
+                  <span>Ikan</span>
+                </button>
+                <!-- Geometris -->
+                <button onclick="selectStamp('geo_kawung', 'Geometris: Kawung')" id="stamp-geo_kawung" class="stamp-btn p-2 rounded-xl bg-white border-2 border-slate-200 font-bold hover:scale-105 transition">
+                  <i class="fa-solid fa-circle-nodes text-lavender text-lg block mb-1"></i>
+                  <span>Kawung</span>
+                </button>
+                <button onclick="selectStamp('geo_tumpal', 'Geometris: Tumpal Segitiga')" id="stamp-geo_tumpal" class="stamp-btn p-2 rounded-xl bg-white border-2 border-slate-200 font-bold hover:scale-105 transition">
+                  <i class="fa-solid fa-play -rotate-90 text-amber-600 text-lg block mb-1"></i>
+                  <span>Tumpal</span>
+                </button>
+                <!-- Figuratif -->
+                <button onclick="selectStamp('fig_topeng', 'Figuratif: Wajah Topeng')" id="stamp-fig_topeng" class="stamp-btn p-2 rounded-xl bg-white border-2 border-slate-200 font-bold hover:scale-105 transition">
+                  <i class="fa-solid fa-masks-theater text-ceri text-lg block mb-1"></i>
+                  <span>Topeng</span>
+                </button>
+                <button onclick="selectStamp('fig_manusia', 'Figuratif: Penari Adat')" id="stamp-fig_manusia" class="stamp-btn p-2 rounded-xl bg-white border-2 border-slate-200 font-bold hover:scale-105 transition">
+                  <i class="fa-solid fa-person-running text-malam text-lg block mb-1"></i>
+                  <span>Penari</span>
+                </button>
+              </div>
+              <div id="current-stamp-info" class="mt-2 text-xs font-semibold text-samudra bg-sky-50 px-2 py-1 rounded-lg border border-sky-200">
+                Stempel Aktif: Flora: Daun Melengkung
+              </div>
+            </div>
+
+            <!-- Step 3: Color and Size Swatches -->
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-bold text-malam font-heading uppercase mb-1">Warna Motif:</label>
+                <div class="flex items-center space-x-1.5">
+                  <button onclick="setStudioColor('#FF4D6D')" class="w-6 h-6 rounded-full bg-[#FF4D6D] border-2 border-white shadow-sm ring-1 ring-slate-300"></button>
+                  <button onclick="setStudioColor('#FB8500')" class="w-6 h-6 rounded-full bg-[#FB8500] border-2 border-white shadow-sm ring-1 ring-slate-300"></button>
+                  <button onclick="setStudioColor('#06D6A0')" class="w-6 h-6 rounded-full bg-[#06D6A0] border-2 border-white shadow-sm ring-1 ring-slate-300"></button>
+                  <button onclick="setStudioColor('#118AB2')" class="w-6 h-6 rounded-full bg-[#118AB2] border-2 border-white shadow-sm ring-1 ring-slate-300"></button>
+                  <button onclick="setStudioColor('#8338EC')" class="w-6 h-6 rounded-full bg-[#8338EC] border-2 border-white shadow-sm ring-1 ring-slate-300"></button>
+                  <button onclick="setStudioColor('#073B4C')" class="w-6 h-6 rounded-full bg-[#073B4C] border-2 border-white shadow-sm ring-1 ring-slate-300"></button>
+                </div>
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-malam font-heading uppercase mb-1">Ukuran Stempel:</label>
+                <input id="stamp-size-slider" type="range" min="20" max="60" value="36" class="w-full accent-amber-500 cursor-pointer">
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap gap-2 pt-2 border-t border-amber-200">
+              <button onclick="fillStudioRepetition()" class="bouncy-btn flex-1 py-2 px-3 bg-amber-400 hover:bg-amber-300 text-malam font-bold text-xs rounded-xl flex items-center justify-center space-x-1">
+                <i class="fa-solid fa-table-cells"></i>
+                <span>Isi Pola Otomatis</span>
+              </button>
+              <button onclick="clearStudioCanvas()" class="bouncy-btn py-2 px-3 bg-rose-100 hover:bg-rose-200 text-ceri border border-rose-300 font-bold text-xs rounded-xl flex items-center space-x-1">
+                <i class="fa-solid fa-trash-can"></i>
+                <span>Bersihkan</span>
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Interactive Live Visual Workspace (7 Cols) -->
+          <div class="lg:col-span-7 flex flex-col items-center justify-center bg-slate-100 p-4 rounded-2xl border-2 border-slate-300 relative min-h-[380px]">
+            
+            <div class="text-xs text-slate-500 font-bold mb-2 flex items-center space-x-2">
+              <i class="fa-solid fa-hand-pointer text-amber-500 animate-pulse"></i>
+              <span>Klik atau sentuh area di bawah untuk menaruh ornamen dekoratif!</span>
+            </div>
+
+            <!-- Virtual Benda Frame Container -->
+            <div id="studio-work-container" class="relative w-full max-w-[420px] h-[340px] bg-amber-50 border-4 border-amber-300 rounded-2xl overflow-hidden shadow-lg cursor-crosshair flex items-center justify-center">
+              
+              <!-- Background Canvas for Stamping -->
+              <canvas id="studioCanvas" width="420" height="340" class="absolute inset-0 w-full h-full z-10"></canvas>
+              
+              <!-- Visual Mockup Overlay Frame (Guci / Perisai cutouts) -->
+              <div id="vas-mask" class="absolute inset-0 pointer-events-none z-20 hidden flex items-center justify-center">
+                <svg viewBox="0 0 420 340" class="w-full h-full">
+                  <defs>
+                    <mask id="vasCutout">
+                      <rect width="420" height="340" fill="white" />
+                      <!-- Vase Shape in Black (Transparent center) -->
+                      <path d="M160,20 Q210,15 260,20 Q280,70 240,110 Q320,180 300,280 Q290,320 210,320 Q130,320 120,280 Q100,180 180,110 Q140,70 160,20 Z" fill="black"/>
+                    </mask>
+                  </defs>
+                  <rect width="420" height="340" fill="#cbd5e1" mask="url(#vasCutout)" opacity="0.95"/>
+                  <!-- Vase Outline -->
+                  <path d="M160,20 Q210,15 260,20 Q280,70 240,110 Q320,180 300,280 Q290,320 210,320 Q130,320 120,280 Q100,180 180,110 Q140,70 160,20 Z" fill="none" stroke="#475569" stroke-width="4"/>
+                </svg>
+              </div>
+
+              <div id="perisai-mask" class="absolute inset-0 pointer-events-none z-20 hidden flex items-center justify-center">
+                <svg viewBox="0 0 420 340" class="w-full h-full">
+                  <defs>
+                    <mask id="perisaiCutout">
+                      <rect width="420" height="340" fill="white" />
+                      <!-- Dayak Shield Diamond/Hexagon shape -->
+                      <polygon points="210,20 310,100 310,240 210,320 110,240 110,100" fill="black"/>
+                    </mask>
+                  </defs>
+                  <rect width="420" height="340" fill="#cbd5e1" mask="url(#perisaiCutout)" opacity="0.95"/>
+                  <polygon points="210,20 310,100 310,240 210,320 110,240 110,100" fill="none" stroke="#854d0e" stroke-width="4"/>
+                </svg>
+              </div>
+
+            </div>
+
+            <!-- Stats & Counter -->
+            <div class="mt-3 flex items-center justify-between w-full max-w-[420px] text-xs font-semibold text-slate-600">
+              <span id="stamp-counter-text">Total Ornamen Ditempel: 0 motif</span>
+              <span class="text-toska font-bold"><i class="fa-solid fa-sparkles"></i> Simpan Desainmu</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section id="section-kuis" class="spa-section hidden animate-fade">
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border-4 border-amber-300 shadow-bouncy mb-6">
+        
+        <!-- Header Kuis -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b-2 border-amber-200 gap-4 mb-6">
+          <div class="flex items-center space-x-3">
+            <span class="p-3 bg-orange-100 text-jeruk rounded-2xl text-2xl border-2 border-orange-300">
+              <i class="fa-solid fa-trophy"></i>
+            </span>
+            <div>
+              <h2 class="text-2xl sm:text-3xl font-bold font-heading text-malam">Kuis Penilaian 3 Tingkat</h2>
+              <p class="text-sm text-slate-600">Uji pemahamanmu secara bertahap: Mudah (10), Sedang (10), Sulit (10)</p>
+            </div>
+          </div>
+
+          <!-- Level Selector Buttons -->
+          <div class="flex p-1 bg-amber-100 rounded-2xl border border-amber-300 space-x-1">
+            <button onclick="startQuizLevel('mudah')" id="quiz-lvl-btn-mudah" class="quiz-lvl-btn active px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold font-heading bg-emerald-500 text-white shadow-sm">
+              Level 1: Mudah
+            </button>
+            <button onclick="startQuizLevel('sedang')" id="quiz-lvl-btn-sedang" class="quiz-lvl-btn px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold font-heading text-slate-600 hover:text-jeruk">
+              Level 2: Sedang
+            </button>
+            <button onclick="startQuizLevel('sulit')" id="quiz-lvl-btn-sulit" class="quiz-lvl-btn px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold font-heading text-slate-600 hover:text-ceri">
+              Level 3: Sulit
+            </button>
+          </div>
+        </div>
+
+        <!-- Quiz Container Active Area -->
+        <div id="quiz-active-box" class="max-w-3xl mx-auto">
+          
+          <!-- Top Bar: Progress and Score -->
+          <div class="flex items-center justify-between mb-4 bg-amber-50 p-4 rounded-2xl border border-amber-200">
+            <div class="flex items-center space-x-2">
+              <span id="quiz-badge-level" class="px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold font-heading rounded-full uppercase">
+                Level: Mudah
+              </span>
+              <span id="quiz-progress-text" class="text-sm font-bold text-slate-700">
+                Soal 1 dari 10
+              </span>
+            </div>
+            <div class="text-sm font-bold text-ceri flex items-center space-x-1">
+              <i class="fa-solid fa-star text-amber-500"></i>
+              <span>Skor Real-Time: <span id="quiz-score-val">0</span></span>
+            </div>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="w-full bg-slate-200 h-3 rounded-full overflow-hidden mb-6">
+            <div id="quiz-progress-bar" class="bg-gradient-to-r from-emerald-400 to-toska h-full w-[10%] transition-all duration-300"></div>
+          </div>
+
+          <!-- Question Content Card -->
+          <div class="bg-slate-50 p-6 rounded-2xl border-2 border-slate-200 mb-6">
+            <div id="quiz-question-type" class="text-xs font-extrabold text-samudra uppercase tracking-wider mb-2 font-heading">
+              Pertanyaan Konseptual
+            </div>
+            <h3 id="quiz-question-text" class="text-lg sm:text-xl font-bold font-heading text-malam leading-snug">
+              Memuat pertanyaan kuis...
+            </h3>
+          </div>
+
+          <!-- Answer Options (4 buttons) -->
+          <div id="quiz-options-container" class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+            <!-- Dynamically populated via JS -->
+          </div>
+
+          <!-- Feedback & Explanation Box (Initially Hidden) -->
+          <div id="quiz-feedback-box" class="hidden p-4 rounded-2xl border-2 mb-6">
+            <div class="flex items-start space-x-3">
+              <span id="feedback-icon" class="text-2xl mt-0.5"></span>
+              <div>
+                <h4 id="feedback-title" class="font-heading font-bold text-base"></h4>
+                <p id="feedback-explanation" class="text-xs sm:text-sm mt-1 leading-relaxed"></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Next Question Button -->
+          <div class="flex justify-end">
+            <button id="quiz-next-btn" onclick="nextQuizQuestion()" class="hidden bouncy-btn px-6 py-3 bg-ceri hover:bg-rose-500 text-white font-extrabold rounded-2xl text-sm flex items-center space-x-2">
+              <span>Lanjut Soal Berikutnya</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Quiz Completion & Certificate View (Hidden Initially) -->
+        <div id="quiz-result-box" class="hidden max-w-2xl mx-auto text-center py-6">
+          <div class="w-20 h-20 mx-auto mb-4 bg-amber-100 rounded-3xl flex items-center justify-center text-4xl text-amber-500 border-2 border-amber-300 shadow-md">
+            <i class="fa-solid fa-award"></i>
+          </div>
+          <h3 class="text-2xl sm:text-3xl font-extrabold font-heading text-malam mb-2">
+            Hore! Kuis Selesai!
+          </h3>
+          <p id="quiz-motivation-text" class="text-slate-600 text-sm max-w-lg mx-auto mb-6">
+            Kamu luar biasa! Teruslah berkarya dan lestarikan seni ragam hias Nusantara.
+          </p>
+
+          <!-- Score Card -->
+          <div class="bg-gradient-to-r from-amber-100 via-orange-100 to-rose-100 p-6 rounded-3xl border-3 border-amber-300 mb-6">
+            <div class="text-xs uppercase tracking-widest font-bold text-slate-500">Skor Akhir Kamu</div>
+            <div id="quiz-final-score" class="text-5xl font-extrabold font-heading text-ceri my-2">100</div>
+            <div id="quiz-stats-summary" class="text-sm font-semibold text-slate-700">Menjawab Benar 10 dari 10 Soal</div>
+          </div>
+
+          <!-- Form to print/generate certificate with Student Name -->
+          <div class="bg-white p-5 rounded-2xl border-2 border-amber-200 mb-6 text-left">
+            <label class="block text-xs font-bold text-malam font-heading uppercase mb-2">
+              Ketik Namamu untuk Mencetak Piagam Digital:
+            </label>
+            <div class="flex gap-2">
+              <input id="cert-student-name" type="text" placeholder="Masukkan nama lengkapmu..." class="flex-1 p-3 rounded-xl border-2 border-slate-300 font-bold text-sm focus:border-amber-400 outline-none">
+              <button onclick="generateCertificateModal()" class="bouncy-btn px-4 py-3 bg-toska hover:bg-emerald-400 text-white font-bold rounded-xl text-sm flex items-center space-x-2">
+                <i class="fa-solid fa-certificate"></i>
+                <span>Buat Sertifikat</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="flex justify-center gap-3">
+            <button onclick="restartCurrentQuiz()" class="bouncy-btn px-5 py-2.5 bg-amber-400 hover:bg-amber-300 text-malam font-bold rounded-xl text-sm">
+              <i class="fa-solid fa-rotate-left mr-1"></i> Ulangi Kuis
+            </button>
+            <button onclick="navigateTo('games')" class="bouncy-btn px-5 py-2.5 bg-lavender hover:bg-purple-500 text-white font-bold rounded-xl text-sm">
+              <i class="fa-solid fa-gamepad mr-1"></i> Mainkan Game
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="section-games" class="spa-section hidden animate-fade">
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border-4 border-amber-300 shadow-bouncy mb-6">
+        
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b-2 border-amber-200 gap-4 mb-6">
+          <div class="flex items-center space-x-3">
+            <span class="p-3 bg-purple-100 text-lavender rounded-2xl text-2xl border-2 border-purple-300">
+              <i class="fa-solid fa-gamepad"></i>
+            </span>
+            <div>
+              <h2 class="text-2xl sm:text-3xl font-bold font-heading text-malam">Arena Permainan Seni</h2>
+              <p class="text-sm text-slate-600">Asah kemampuan membedakan motif lewat 2 mode game seru!</p>
+            </div>
+          </div>
+
+          <!-- Game Mode Selector -->
+          <div class="flex p-1 bg-amber-100 rounded-2xl border border-amber-300 space-x-1">
+            <button onclick="switchGameMode('sorting')" id="game-tab-sorting" class="game-tab-btn active px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold font-heading bg-white text-lavender shadow-sm">
+              <i class="fa-solid fa-dolly mr-1"></i> Pilah Motif (Sorting)
+            </button>
+            <button onclick="switchGameMode('memory')" id="game-tab-memory" class="game-tab-btn px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold font-heading text-slate-600 hover:text-lavender">
+              <i class="fa-solid fa-clone mr-1"></i> Memori Kartu Pasangan
+            </button>
+          </div>
+        </div>
+
+        <!-- MODE 1: SORTING / PILAH MOTIF KE KERANJANG -->
+        <div id="game-mode-sorting" class="game-view block">
+          
+          <div class="bg-amber-50 p-4 rounded-2xl border border-amber-200 mb-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div>
+              <h3 class="font-heading font-bold text-base text-malam">Misi: Masukkan Setiap Kartu ke Keranjang yang Tepat!</h3>
+              <p class="text-xs text-slate-600">Klik kartu di bawah, lalu klik keranjang tujuannya (Mendukung sentuhan layar HP & tablet).</p>
+            </div>
+            <div class="flex items-center space-x-3 font-bold text-sm">
+              <span class="text-emerald-700 bg-emerald-100 px-3 py-1 rounded-xl">Benar: <span id="sort-correct-count">0</span></span>
+              <span class="text-rose-700 bg-rose-100 px-3 py-1 rounded-xl">Sisa: <span id="sort-remaining-count">8</span></span>
+              <button onclick="initSortingGame()" class="bouncy-btn px-3 py-1 bg-white border border-amber-400 rounded-xl text-xs font-bold text-amber-700">
+                <i class="fa-solid fa-arrow-rotate-right"></i> Reset
+              </button>
+            </div>
+          </div>
+
+          <!-- Current Items to be Sorted -->
+          <div class="mb-6">
+            <label class="block text-xs font-bold text-slate-500 font-heading uppercase mb-2">Pilih Kartu Motif di Bawah Ini:</label>
+            <div id="sort-cards-pool" class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <!-- Dynamically generated items -->
+            </div>
+          </div>
+
+          <!-- 4 Target Baskets -->
+          <div>
+            <label class="block text-xs font-bold text-slate-500 font-heading uppercase mb-2">Pilih Keranjang Tujuan:</label>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              
+              <!-- Basket Flora -->
+              <div onclick="depositToBasket('flora')" class="basket-box cursor-pointer p-4 rounded-2xl bg-emerald-50 border-3 border-dashed border-emerald-400 text-center hover:bg-emerald-100 transition">
+                <div class="w-12 h-12 mx-auto mb-2 bg-emerald-200 text-emerald-800 rounded-xl flex items-center justify-center text-xl font-bold">
+                  <i class="fa-solid fa-leaf"></i>
+                </div>
+                <h4 class="font-heading font-bold text-sm text-emerald-900">Keranjang FLORA</h4>
+                <p class="text-[11px] text-emerald-700 font-semibold mt-1">Dedaunan & Bunga</p>
+                <div id="basket-flora-count" class="mt-2 text-xs font-extrabold text-emerald-800">0 Item</div>
+              </div>
+
+              <!-- Basket Fauna -->
+              <div onclick="depositToBasket('fauna')" class="basket-box cursor-pointer p-4 rounded-2xl bg-amber-50 border-3 border-dashed border-amber-400 text-center hover:bg-amber-100 transition">
+                <div class="w-12 h-12 mx-auto mb-2 bg-amber-200 text-amber-800 rounded-xl flex items-center justify-center text-xl font-bold">
+                  <i class="fa-solid fa-dove"></i>
+                </div>
+                <h4 class="font-heading font-bold text-sm text-amber-900">Keranjang FAUNA</h4>
+                <p class="text-[11px] text-amber-700 font-semibold mt-1">Hewan & Satwa</p>
+                <div id="basket-fauna-count" class="mt-2 text-xs font-extrabold text-amber-800">0 Item</div>
+              </div>
+
+              <!-- Basket Geometris -->
+              <div onclick="depositToBasket('geometris')" class="basket-box cursor-pointer p-4 rounded-2xl bg-sky-50 border-3 border-dashed border-sky-400 text-center hover:bg-sky-100 transition">
+                <div class="w-12 h-12 mx-auto mb-2 bg-sky-200 text-sky-800 rounded-xl flex items-center justify-center text-xl font-bold">
+                  <i class="fa-solid fa-shapes"></i>
+                </div>
+                <h4 class="font-heading font-bold text-sm text-sky-900">Keranjang GEOMETRIS</h4>
+                <p class="text-[11px] text-sky-700 font-semibold mt-1">Pola Garis & Bidang</p>
+                <div id="basket-geometris-count" class="mt-2 text-xs font-extrabold text-sky-800">0 Item</div>
+              </div>
+
+              <!-- Basket Figuratif -->
+              <div onclick="depositToBasket('figuratif')" class="basket-box cursor-pointer p-4 rounded-2xl bg-rose-50 border-3 border-dashed border-rose-400 text-center hover:bg-rose-100 transition">
+                <div class="w-12 h-12 mx-auto mb-2 bg-rose-200 text-rose-800 rounded-xl flex items-center justify-center text-xl font-bold">
+                  <i class="fa-solid fa-user-astronaut"></i>
+                </div>
+                <h4 class="font-heading font-bold text-sm text-rose-900">Keranjang FIGURATIF</h4>
+                <p class="text-[11px] text-rose-700 font-semibold mt-1">Wujud Manusia & Topeng</p>
+                <div id="basket-figuratif-count" class="mt-2 text-xs font-extrabold text-rose-800">0 Item</div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- MODE 2: MEMORY MATCHING PAIR -->
+        <div id="game-mode-memory" class="game-view hidden">
+          <div class="bg-purple-50 p-4 rounded-2xl border border-purple-200 mb-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div>
+              <h3 class="font-heading font-bold text-base text-malam">Misi: Temukan Pasangan Gambar Motif yang Kembar!</h3>
+              <p class="text-xs text-slate-600">Buka dua kartu. Jika gambarnya sama, kartu akan terkunci!</p>
+            </div>
+            <div class="flex items-center space-x-3 font-bold text-sm">
+              <span class="text-purple-700 bg-purple-100 px-3 py-1 rounded-xl">Langkah: <span id="memory-moves">0</span></span>
+              <span class="text-emerald-700 bg-emerald-100 px-3 py-1 rounded-xl">Cocok: <span id="memory-matches">0 / 6</span></span>
+              <button onclick="initMemoryGame()" class="bouncy-btn px-3 py-1 bg-white border border-purple-400 rounded-xl text-xs font-bold text-purple-700">
+                <i class="fa-solid fa-arrow-rotate-right"></i> Acak Ulang
+              </button>
+            </div>
+          </div>
+
+          <!-- Memory 4x3 Grid (12 Cards) -->
+          <div id="memory-grid" class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3 max-w-4xl mx-auto">
+            <!-- Dynamically populated via JS -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="section-kesimpulan" class="spa-section hidden animate-fade">
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border-4 border-amber-300 shadow-bouncy mb-6">
+        
+        <div class="flex items-center space-x-3 mb-6">
+          <span class="p-3 bg-amber-100 text-matahari rounded-2xl text-2xl border-2 border-amber-300">
+            <i class="fa-solid fa-book-bookmark"></i>
+          </span>
+          <div>
+            <h2 class="text-2xl sm:text-3xl font-bold font-heading text-malam">Rangkuman Materi Seni Dekoratif</h2>
+            <p class="text-sm text-slate-600">Inti sari penting yang wajib kamu ingat dalam 1 infografis ringkas</p>
+          </div>
+        </div>
+
+        <div class="space-y-6">
+          <!-- Point 1 -->
+          <div class="p-5 rounded-2xl bg-amber-50 border-2 border-amber-300 flex items-start space-x-4">
+            <div class="w-10 h-10 rounded-xl bg-amber-200 text-jeruk flex items-center justify-center font-bold text-xl flex-shrink-0">
+              📌
+            </div>
+            <div>
+              <h3 class="font-heading font-bold text-lg text-malam">1. Hakekat Ragam Hias & Seni Dekoratif</h3>
+              <p class="text-sm text-slate-700 mt-1 leading-relaxed">
+                Ragam hias adalah susunan pola dekoratif berulang yang diterapkan pada benda seni/kerajinan. Pembuatannya melalui proses <strong>stilisasi</strong> (penyederhanaan atau penggubahan bentuk nyata tanpa menghilangkan ciri aslinya) agar tercipta irama visual yang harmonis.
+              </p>
+            </div>
+          </div>
+
+          <!-- Point 2 -->
+          <div class="p-5 rounded-2xl bg-sky-50 border-2 border-sky-300 flex items-start space-x-4">
+            <div class="w-10 h-10 rounded-xl bg-sky-200 text-samudra flex items-center justify-center font-bold text-xl flex-shrink-0">
+              🌿
+            </div>
+            <div>
+              <h3 class="font-heading font-bold text-lg text-malam">2. Empat Pilar Motif Nusantara</h3>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3 text-xs sm:text-sm">
+                <div class="bg-white p-3 rounded-xl border border-sky-200">
+                  <strong>• Flora:</strong> Inspirasi tumbuhan (daun, bunga teratai, sulur Jepara).
+                </div>
+                <div class="bg-white p-3 rounded-xl border border-sky-200">
+                  <strong>• Fauna:</strong> Inspirasi hewan (cendrawasih, kerbau Toraja, ikan).
+                </div>
+                <div class="bg-white p-3 rounded-xl border border-sky-200">
+                  <strong>• Geometris:</strong> Garis, lengkung, segitiga tumpal, pilin, kawung, parang.
+                </div>
+                <div class="bg-white p-3 rounded-xl border border-sky-200">
+                  <strong>• Figuratif:</strong> Bentuk figur manusia, topeng adat, leluhur suku Asmat.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Point 3 -->
+          <div class="p-5 rounded-2xl bg-rose-50 border-2 border-rose-300 flex items-start space-x-4">
+            <div class="w-10 h-10 rounded-xl bg-rose-200 text-ceri flex items-center justify-center font-bold text-xl flex-shrink-0">
+              💡
+            </div>
+            <div>
+              <h3 class="font-heading font-bold text-lg text-malam">3. Tiga Fungsi Utama</h3>
+              <p class="text-sm text-slate-700 mt-1 leading-relaxed">
+                Ingat rumus <strong>E - S - K</strong>:
+              </p>
+              <ul class="text-xs sm:text-sm text-slate-700 mt-2 space-y-1 list-disc list-inside">
+                <li><strong>Estetis:</strong> Menambah keindahan dan daya tarik visual.</li>
+                <li><strong>Simbolis:</strong> Membawa makna adat, doa keselamatan, atau status sosial.</li>
+                <li><strong>Konstruktif:</strong> Memperkuat daya topang atau struktur fisik benda/bangunan.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 text-center">
+          <button onclick="navigateTo('simulasi')" class="bouncy-btn px-6 py-3 bg-toska hover:bg-emerald-400 text-white font-extrabold rounded-2xl text-sm">
+            <i class="fa-solid fa-palette mr-1"></i> Buka Studio dan Aplikasikan Ilmu Ini!
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="section-refleksi" class="spa-section hidden animate-fade">
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border-4 border-amber-300 shadow-bouncy mb-6">
+        
+        <div class="flex items-center space-x-3 mb-6">
+          <span class="p-3 bg-rose-100 text-ceri rounded-2xl text-2xl border-2 border-rose-300">
+            <i class="fa-solid fa-comments"></i>
+          </span>
+          <div>
+            <h2 class="text-2xl sm:text-3xl font-bold font-heading text-malam">Papan Refleksi Belajar Siswa</h2>
+            <p class="text-sm text-slate-600">Bagikan apa yang kamu rasakan dan pelajari hari ini di papan sticky note bersama!</p>
+          </div>
+        </div>
+
+        <!-- Layout: Input Form + Virtual Sticky Notes Board -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          
+          <!-- Reflection Form (4 cols) -->
+          <div class="lg:col-span-4 bg-amber-50 p-5 rounded-2xl border-2 border-amber-300 flex flex-col justify-between">
+            <div>
+              <h3 class="font-heading font-bold text-base text-malam mb-3">Tulis Catatan Refleksimu:</h3>
+              
+              <!-- Name Input -->
+              <div class="mb-3">
+                <label class="block text-xs font-bold text-slate-600 font-heading uppercase mb-1">Nama Lengkap Siswa:</label>
+                <input id="refl-name" type="text" placeholder="Contoh: Budi Santoso" class="w-full p-2.5 rounded-xl border-2 border-slate-300 text-sm font-semibold focus:border-amber-400 outline-none">
+              </div>
+
+              <!-- Feeling Emoji Selector -->
+              <div class="mb-3">
+                <label class="block text-xs font-bold text-slate-600 font-heading uppercase mb-1">Perasaan Hari Ini:</label>
+                <div class="grid grid-cols-4 gap-2 text-center">
+                  <label class="cursor-pointer">
+                    <input type="radio" name="refl-mood" value="Senang Sekali! 😄" checked class="peer sr-only">
+                    <div class="p-2 rounded-xl bg-white border-2 border-slate-200 peer-checked:border-ceri peer-checked:bg-rose-50 text-xl">
+                      😄
+                    </div>
+                  </label>
+                  <label class="cursor-pointer">
+                    <input type="radio" name="refl-mood" value="Kagum Budaya 🤩" class="peer sr-only">
+                    <div class="p-2 rounded-xl bg-white border-2 border-slate-200 peer-checked:border-ceri peer-checked:bg-rose-50 text-xl">
+                      🤩
+                    </div>
+                  </label>
+                  <label class="cursor-pointer">
+                    <input type="radio" name="refl-mood" value="Ingin Berkarya 🎨" class="peer sr-only">
+                    <div class="p-2 rounded-xl bg-white border-2 border-slate-200 peer-checked:border-ceri peer-checked:bg-rose-50 text-xl">
+                      🎨
+                    </div>
+                  </label>
+                  <label class="cursor-pointer">
+                    <input type="radio" name="refl-mood" value="Paham Banget 💡" class="peer sr-only">
+                    <div class="p-2 rounded-xl bg-white border-2 border-slate-200 peer-checked:border-ceri peer-checked:bg-rose-50 text-xl">
+                      💡
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Message Input -->
+              <div class="mb-4">
+                <label class="block text-xs font-bold text-slate-600 font-heading uppercase mb-1">Hal Baru yang Kamu Pelajari:</label>
+                <textarea id="refl-message" rows="3" placeholder="Tuliskan pengalaman belajarmu di sini..." class="w-full p-2.5 rounded-xl border-2 border-slate-300 text-xs sm:text-sm font-semibold focus:border-amber-400 outline-none"></textarea>
+              </div>
+
+              <!-- Color Sticky Note Picker -->
+              <div class="mb-4">
+                <label class="block text-xs font-bold text-slate-600 font-heading uppercase mb-1">Pilih Warna Sticky Note:</label>
+                <div class="flex space-x-2">
+                  <button type="button" onclick="setStickyColor('#fff9c4')" class="w-7 h-7 rounded-full bg-[#fff9c4] border-2 border-amber-300 shadow-sm ring-2 ring-amber-400"></button>
+                  <button type="button" onclick="setStickyColor('#ffcdd2')" class="w-7 h-7 rounded-full bg-[#ffcdd2] border-2 border-rose-300 shadow-sm"></button>
+                  <button type="button" onclick="setStickyColor('#c8e6c9')" class="w-7 h-7 rounded-full bg-[#c8e6c9] border-2 border-emerald-300 shadow-sm"></button>
+                  <button type="button" onclick="setStickyColor('#bbdefb')" class="w-7 h-7 rounded-full bg-[#bbdefb] border-2 border-sky-300 shadow-sm"></button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Submit Button with Google Apps Script Endpoint Hook -->
+            <div>
+              <button onclick="submitReflection()" class="bouncy-btn w-full py-3 bg-ceri hover:bg-rose-500 text-white font-extrabold rounded-xl text-sm flex items-center justify-center space-x-2">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span>Tempel di Papan Virtual</span>
+              </button>
+              <div class="text-[10px] text-slate-500 text-center mt-2">
+                Tersimpan di peramban & siap disinkronkan ke Google Spreadsheet Guru.
+              </div>
+            </div>
+          </div>
+
+          <!-- Sticky Notes Board Grid (8 cols) -->
+          <div class="lg:col-span-8 bg-amber-100/60 p-5 rounded-2xl border-4 border-dashed border-amber-300 min-h-[400px]">
+            <div class="flex items-center justify-between mb-4">
+              <span class="font-heading font-bold text-sm text-malam">
+                📌 Dinding Aspirasi Siswa (<span id="sticky-count">3</span> Catatan)
+              </span>
+              <button onclick="clearAllReflections()" class="text-xs text-rose-500 hover:underline font-bold">
+                Reset Catatan
+              </button>
+            </div>
+
+            <div id="sticky-notes-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+              <!-- Dynamically populated sticky notes -->
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <div id="cert-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-2xl w-full border-4 border-amber-400 p-6 sm:p-8 shadow-2xl relative animate-bounce-short">
+      
+      <button onclick="closeCertificateModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold flex items-center justify-center">
+        ✕
+      </button>
+
+      <!-- Certificate Visual Frame -->
+      <div id="certificate-print-area" class="border-4 border-double border-amber-500 bg-amber-50/50 p-6 rounded-2xl text-center relative overflow-hidden">
+        <div class="absolute -top-6 -right-6 text-amber-200 text-8xl opacity-30 pointer-events-none">
+          <i class="fa-solid fa-award"></i>
+        </div>
+
+        <div class="text-xs font-extrabold tracking-widest text-amber-700 uppercase font-heading mb-1">
+          Sahabat RUMPI (Rumah Multimedia Pembelajaran Interaktif)
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold font-heading text-malam">PIAGAM PENGHARGAAN</h2>
+        <div class="w-24 h-1 bg-amber-400 mx-auto my-2 rounded-full"></div>
+        <p class="text-xs text-slate-600">Diberikan dengan bangga kepada:</p>
+
+        <div id="cert-display-name" class="text-2xl sm:text-3xl font-extrabold text-ceri my-3 font-heading underline decoration-amber-400">
+          Siswa Berprestasi
+        </div>
+
+        <p class="text-xs sm:text-sm text-slate-700 max-w-md mx-auto leading-relaxed">
+          Atas keberhasilan menuntaskan seluruh tantangan evaluasi & simulasi pada modul:
+          <br><strong>"Seni Dekoratif: Ragam Hias Nusantara Kelas 4 SD"</strong>
+        </p>
+
+        <div class="mt-6 flex justify-between items-end border-t border-amber-300 pt-4 text-left">
+          <div class="text-[11px] text-slate-600">
+            <div>Nilai Kuis: <strong id="cert-display-score">100</strong> / 100</div>
+            <div>Tanggal: <span id="cert-display-date">Hari Ini</span></div>
+          </div>
+          <div class="text-right text-[11px] text-slate-700">
+            <div class="font-bold">Guru Pengampu:</div>
+            <div class="font-heading font-extrabold text-xs text-malam mt-1">Rohmatun Ni’mah, S.Pd., Gr.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4 flex justify-end space-x-2">
+        <button onclick="window.print()" class="bouncy-btn px-4 py-2 bg-amber-400 hover:bg-amber-300 text-malam font-bold rounded-xl text-xs flex items-center space-x-1">
+          <i class="fa-solid fa-print"></i>
+          <span>Cetak / Simpan PDF</span>
+        </button>
+        <button onclick="closeCertificateModal()" class="bouncy-btn px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold rounded-xl text-xs">
+          Tutup
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="bg-white border-t-4 border-amber-300 mt-12 py-6 px-4">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+      
+      <!-- Logo RUMPI with user specified link and image -->
+      <div class="flex items-center space-x-3">
+        <a href="https://ibb.co.com/tT2SG4Jj" target="_blank" rel="noopener noreferrer" class="block w-14 h-14 bg-amber-50 p-1.5 rounded-2xl border-2 border-amber-300 hover:scale-105 transition shadow-sm">
+          <img src="https://i.ibb.co.com/W4zQh628/044f42bc-0679-429c-8b7d-dda1948f4b3a.png" 
+               alt="Logo RUMPI" 
+               class="max-h-full max-w-full object-contain mx-auto"
+               onerror="this.src='https://placehold.co/100x100/FFB703/073B4C?text=RUMPI'">
+        </a>
+        <div>
+          <h4 class="font-heading font-bold text-base text-malam leading-tight">
+            Sahabat RUMPI (Rumah Multimedia Pembelajaran Interaktif)
+          </h4>
+          <p class="text-xs text-slate-600">
+            Media Pembelajaran Berdiferensiasi & Deep Learning Seni Rupa Kelas 4
+          </p>
+        </div>
+      </div>
+
+      <!-- Author Attribution -->
+      <div class="text-xs font-semibold text-slate-600">
+        <span class="inline-block px-3 py-1 bg-amber-100 text-amber-900 rounded-full font-heading font-bold mb-1">
+          <i class="fa-solid fa-chalkboard-user mr-1"></i> Karya Guru Inovatif
+        </span>
+        <div>Dikembangkan oleh: <strong>Rohmatun Ni’mah, S.Pd., Gr.</strong></div>
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    /* ==========================================================================
+       1. WEB AUDIO API SYNTHESIZER ENGINE (TANPA FILE AUDIO MP3 EKSTERNAL)
+       ========================================================================== */
+    let audioEnabled = true;
+    let audioCtx = null;
+
+    function getAudioContext() {
+      if (!audioCtx) {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AudioContext();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    function toggleAudio() {
+      audioEnabled = !audioEnabled;
+      const icon = document.getElementById('audio-icon');
+      const label = document.getElementById('audio-label');
+      if (audioEnabled) {
+        icon.className = 'fa-solid fa-volume-high text-lg text-samudra';
+        label.innerText = 'Suara: ON';
+        showToast('Suara Aktif', 'Efek suara synthesizer siap menemani belajarmu!', 'fa-volume-high');
+        playSound('pop');
+      } else {
+        icon.className = 'fa-solid fa-volume-xmark text-lg text-slate-400';
+        label.innerText = 'Suara: OFF';
+        showToast('Suara Mati', 'Suara synthesizer dinonaktifkan.', 'fa-volume-xmark');
+      }
+    }
+
+    // Play tone synthesized using Web Audio API
+    function playSound(type) {
+      if (!audioEnabled) return;
+      try {
+        const ctx = getAudioContext();
+        const now = ctx.currentTime;
+
+        if (type === 'click' || type === 'pop') {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(450, now);
+          osc.frequency.exponentialRampToValueAtTime(800, now + 0.08);
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.08);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(now);
+          osc.stop(now + 0.09);
+        } else if (type === 'correct') {
+          // Melodic victory chord (C5 -> E5 -> G5)
+          [523.25, 659.25, 783.99].forEach((freq, idx) => {
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(freq, now + idx * 0.09);
+            gain.gain.setValueAtTime(0.18, now + idx * 0.09);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.09 + 0.25);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start(now + idx * 0.09);
+            osc.stop(now + idx * 0.09 + 0.28);
+          });
+        } else if (type === 'wrong') {
+          // Buzz chord
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(180, now);
+          osc.frequency.linearRampToValueAtTime(120, now + 0.25);
+          gain.gain.setValueAtTime(0.18, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.25);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(now);
+          osc.stop(now + 0.26);
+        } else if (type === 'fanfare') {
+          // Trophy fanfare
+          const notes = [523.25, 659.25, 783.99, 1046.5];
+          notes.forEach((freq, idx) => {
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, now + idx * 0.12);
+            gain.gain.setValueAtTime(0.2, now + idx * 0.12);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.12 + 0.35);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start(now + idx * 0.12);
+            osc.stop(now + idx * 0.12 + 0.38);
+          });
+        }
+      } catch (e) {
+        console.warn('Audio context error:', e);
+      }
+    }
+
+    /* ==========================================================================
+       2. SPA NAVIGATION & TOAST MESSENGER
+       ========================================================================== */
+    function navigateTo(sectionId) {
+      playSound('click');
+      const sections = document.querySelectorAll('.spa-section');
+      sections.forEach(sec => sec.classList.add('hidden'));
+
+      const target = document.getElementById(`section-${sectionId}`);
+      if (target) {
+        target.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      // Re-trigger layout-sensitive tasks
+      if (sectionId === 'simulasi') {
+        setTimeout(initStudioCanvas, 100);
+      } else if (sectionId === 'games') {
+        setTimeout(() => {
+          initSortingGame();
+          initMemoryGame();
+        }, 100);
+      }
+    }
+
+    function showToast(title, desc, iconClass = 'fa-circle-check') {
+      const toast = document.getElementById('toast-modal');
+      const titleEl = document.getElementById('toast-title');
+      const descEl = document.getElementById('toast-desc');
+      const iconEl = document.getElementById('toast-icon');
+
+      titleEl.innerText = title;
+      descEl.innerText = desc;
+      iconEl.className = `fa-solid ${iconClass}`;
+
+      toast.classList.remove('translate-x-96');
+      toast.classList.add('translate-x-0');
+
+      setTimeout(() => {
+        toast.classList.add('translate-x-96');
+        toast.classList.remove('translate-x-0');
+      }, 3000);
+    }
+
+    /* Flip Card Trigger */
+    function flipCard(cardId) {
+      playSound('pop');
+      const card = document.getElementById(cardId);
+      card.classList.toggle('rotate-y-180');
+    }
+
+    /* ==========================================================================
+       3. SUB-TAB MATERI
+       ========================================================================== */
+    function switchMateriTab(tabKey) {
+      playSound('pop');
+      document.querySelectorAll('.materi-tab-btn').forEach(btn => {
+        btn.classList.remove('active', 'bg-white', 'text-ceri', 'shadow-sm');
+        btn.classList.add('text-slate-600');
+      });
+      const activeBtn = document.getElementById(`tab-btn-${tabKey}`);
+      if (activeBtn) {
+        activeBtn.classList.add('active', 'bg-white', 'text-ceri', 'shadow-sm');
+        activeBtn.classList.remove('text-slate-600');
+      }
+
+      document.querySelectorAll('.materi-subtab').forEach(content => {
+        content.classList.add('hidden');
+      });
+      const targetSub = document.getElementById(`materi-subtab-${tabKey}`);
+      if (targetSub) {
+        targetSub.classList.remove('hidden');
+      }
+    }
+
+    /* ==========================================================================
+       4. SIMULASI INTERAKTIF: STUDIO RAGAM HIAS VIRTUAL
+       ========================================================================== */
+    let currentStamp = 'flora_daun';
+    let currentColor = '#FF4D6D';
+    let stampCount = 0;
+    let canvas, ctxCanvas;
+
+    function initStudioCanvas() {
+      canvas = document.getElementById('studioCanvas');
+      if (!canvas) return;
+      ctxCanvas = canvas.getContext('2d');
+
+      // Add touch and mouse click listeners
+      canvas.removeEventListener('click', handleCanvasClick);
+      canvas.addEventListener('click', handleCanvasClick);
+      canvas.removeEventListener('touchstart', handleCanvasTouch);
+      canvas.addEventListener('touchstart', handleCanvasTouch, { passive: false });
+    }
+
+    function changeStudioTarget(targetType) {
+      playSound('pop');
+      document.querySelectorAll('.target-btn').forEach(b => {
+        b.classList.remove('active', 'border-amber-400', 'bg-amber-50');
+        b.classList.add('border-slate-200', 'bg-white');
+      });
+      const btn = document.getElementById(`target-btn-${targetType}`);
+      if (btn) {
+        btn.classList.add('active', 'border-amber-400', 'bg-amber-50');
+        btn.classList.remove('border-slate-200', 'bg-white');
+      }
+
+      const vasMask = document.getElementById('vas-mask');
+      const perisaiMask = document.getElementById('perisai-mask');
+
+      vasMask.classList.add('hidden');
+      perisaiMask.classList.add('hidden');
+
+      if (targetType === 'vas') {
+        vasMask.classList.remove('hidden');
+      } else if (targetType === 'perisai') {
+        perisaiMask.classList.remove('hidden');
+      }
+      showToast('Media Berubah', `Sekarang kamu menghias ${targetType.toUpperCase()}!`, 'fa-palette');
+    }
+
+    function selectStamp(stampKey, label) {
+      playSound('pop');
+      currentStamp = stampKey;
+      document.querySelectorAll('.stamp-btn').forEach(b => {
+        b.classList.remove('active', 'border-emerald-400', 'border-amber-400', 'bg-amber-100');
+        b.classList.add('border-slate-200', 'bg-white');
+      });
+      const activeBtn = document.getElementById(`stamp-${stampKey}`);
+      if (activeBtn) {
+        activeBtn.classList.add('active', 'border-emerald-400', 'bg-amber-50');
+      }
+      document.getElementById('current-stamp-info').innerText = `Stempel Aktif: ${label}`;
+    }
+
+    function setStudioColor(hex) {
+      playSound('click');
+      currentColor = hex;
+      showToast('Warna Dipilih', `Warna motif diganti menjadi ${hex}`, 'fa-droplet');
+    }
+
+    function handleCanvasTouch(e) {
+      e.preventDefault();
+      const rect = canvas.getBoundingClientRect();
+      const touch = e.touches[0];
+      const scaleX = canvas.width / rect.width;
+      const scaleY = canvas.height / rect.height;
+      const x = (touch.clientX - rect.left) * scaleX;
+      const y = (touch.clientY - rect.top) * scaleY;
+      drawStampOnCanvas(x, y);
+    }
+
+    function handleCanvasClick(e) {
+      const rect = canvas.getBoundingClientRect();
+      const scaleX = canvas.width / rect.width;
+      const scaleY = canvas.height / rect.height;
+      const x = (e.clientX - rect.left) * scaleX;
+      const y = (e.clientY - rect.top) * scaleY;
+      drawStampOnCanvas(x, y);
+    }
+
+    function drawStampOnCanvas(x, y) {
+      playSound('pop');
+      const size = parseInt(document.getElementById('stamp-size-slider').value, 10) || 36;
+      ctxCanvas.save();
+      ctxCanvas.translate(x, y);
+      ctxCanvas.fillStyle = currentColor;
+      ctxCanvas.strokeStyle = currentColor;
+      ctxCanvas.lineWidth = 2.5;
+
+      // Draw custom procedural decorative stamp shapes
+      switch (currentStamp) {
+        case 'flora_daun':
+          // Leaf shape
+          ctxCanvas.beginPath();
+          ctxCanvas.moveTo(0, -size / 2);
+          ctxCanvas.quadraticCurveTo(size / 2, -size / 4, size / 3, size / 2);
+          ctxCanvas.quadraticCurveTo(0, size / 3, 0, size / 2);
+          ctxCanvas.quadraticCurveTo(0, size / 3, -size / 3, size / 2);
+          ctxCanvas.quadraticCurveTo(-size / 2, -size / 4, 0, -size / 2);
+          ctxCanvas.fill();
+          ctxCanvas.stroke();
+          break;
+
+        case 'flora_bunga':
+          // 5-petal rosette
+          for (let i = 0; i < 5; i++) {
+            ctxCanvas.rotate((Math.PI * 2) / 5);
+            ctxCanvas.beginPath();
+            ctxCanvas.ellipse(0, size / 3, size / 5, size / 3, 0, 0, Math.PI * 2);
+            ctxCanvas.fill();
+          }
+          ctxCanvas.beginPath();
+          ctxCanvas.arc(0, 0, size / 6, 0, Math.PI * 2);
+          ctxCanvas.fillStyle = '#fff';
+          ctxCanvas.fill();
+          break;
+
+        case 'fauna_burung':
+          // Stylized bird/wing silhouette
+          ctxCanvas.beginPath();
+          ctxCanvas.moveTo(-size / 2, 0);
+          ctxCanvas.quadraticCurveTo(0, -size / 2, size / 2, -size / 4);
+          ctxCanvas.quadraticCurveTo(size / 4, size / 4, 0, size / 3);
+          ctxCanvas.quadraticCurveTo(-size / 4, size / 2, -size / 2, 0);
+          ctxCanvas.fill();
+          ctxCanvas.stroke();
+          break;
+
+        case 'fauna_ikan':
+          // Stylized fish
+          ctxCanvas.beginPath();
+          ctxCanvas.ellipse(0, 0, size / 2, size / 4, 0, 0, Math.PI * 2);
+          ctxCanvas.fill();
+          ctxCanvas.beginPath();
+          ctxCanvas.moveTo(size / 3, 0);
+          ctxCanvas.lineTo(size / 2 + size / 4, -size / 4);
+          ctxCanvas.lineTo(size / 2 + size / 4, size / 4);
+          ctxCanvas.closePath();
+          ctxCanvas.fill();
+          break;
+
+        case 'geo_kawung':
+          // Classic 4-petal Kawung motif
+          for (let i = 0; i < 4; i++) {
+            ctxCanvas.rotate(Math.PI / 2);
+            ctxCanvas.beginPath();
+            ctxCanvas.ellipse(0, size / 3.5, size / 7, size / 3.5, 0, 0, Math.PI * 2);
+            ctxCanvas.fill();
+          }
+          ctxCanvas.beginPath();
+          ctxCanvas.arc(0, 0, size / 8, 0, Math.PI * 2);
+          ctxCanvas.fillStyle = '#fff';
+          ctxCanvas.fill();
+          break;
+
+        case 'geo_tumpal':
+          // Sacred triangle Tumpal
+          ctxCanvas.beginPath();
+          ctxCanvas.moveTo(0, -size / 2);
+          ctxCanvas.lineTo(size / 2, size / 2);
+          ctxCanvas.lineTo(-size / 2, size / 2);
+          ctxCanvas.closePath();
+          ctxCanvas.fill();
+          ctxCanvas.stroke();
+          break;
+
+        case 'fig_topeng':
+          // Mask shape
+          ctxCanvas.beginPath();
+          ctxCanvas.ellipse(0, 0, size / 2.5, size / 2, 0, 0, Math.PI * 2);
+          ctxCanvas.fill();
+          ctxCanvas.fillStyle = '#fff';
+          ctxCanvas.beginPath();
+          ctxCanvas.arc(-size / 6, -size / 8, size / 10, 0, Math.PI * 2);
+          ctxCanvas.arc(size / 6, -size / 8, size / 10, 0, Math.PI * 2);
+          ctxCanvas.fill();
+          break;
+
+        case 'fig_manusia':
+          // Stick puppet / dancer silhouette
+          ctxCanvas.beginPath();
+          ctxCanvas.arc(0, -size / 3, size / 6, 0, Math.PI * 2);
+          ctxCanvas.fill();
+          ctxCanvas.beginPath();
+          ctxCanvas.moveTo(0, -size / 6);
+          ctxCanvas.lineTo(0, size / 4);
+          ctxCanvas.moveTo(-size / 3, 0);
+          ctxCanvas.lineTo(size / 3, -size / 6);
+          ctxCanvas.moveTo(0, size / 4);
+          ctxCanvas.lineTo(-size / 4, size / 2);
+          ctxCanvas.moveTo(0, size / 4);
+          ctxCanvas.lineTo(size / 4, size / 2);
+          ctxCanvas.stroke();
+          break;
+      }
+
+      ctxCanvas.restore();
+      stampCount++;
+      document.getElementById('stamp-counter-text').innerText = `Total Ornamen Ditempel: ${stampCount} motif`;
+    }
+
+    function fillStudioRepetition() {
+      playSound('fanfare');
+      if (!ctxCanvas) return;
+      const step = 60;
+      for (let x = 40; x < canvas.width; x += step) {
+        for (let y = 40; y < canvas.height; y += step) {
+          drawStampOnCanvas(x, y);
+        }
+      }
+      showToast('Pola Repetisi Terbentuk!', 'Ragam hias tersusun seimbang berulang.', 'fa-table-cells');
+    }
+
+    function clearStudioCanvas() {
+      playSound('click');
+      if (!ctxCanvas) return;
+      ctxCanvas.clearRect(0, 0, canvas.width, canvas.height);
+      stampCount = 0;
+      document.getElementById('stamp-counter-text').innerText = 'Total Ornamen Ditempel: 0 motif';
+      showToast('Kanvas Bersih', 'Siap membuat karya ragam hias baru!', 'fa-trash-can');
+    }
+
+    /* ==========================================================================
+       5. BANK SOAL 3 TINGKAT (MUDAH, SEDANG, SULIT) - 10 SOAL PER LEVEL (TOTAL 30)
+       ========================================================================== */
+    const quizDatabase = {
+      mudah: [
+        {
+          q: "Apa pengertian dasar dari seni dekoratif atau ragam hias?",
+          options: [
+            "Gambar pemandangan alam nyata tanpa sentuhan pola",
+            "Bentuk hiasan berpola yang dibuat untuk memperindah bidang benda",
+            "Lukisan abstrak yang tidak memiliki bentuk jelas",
+            "Patung batu berukuran besar di tepi jalan raya"
+          ],
+          ans: 1,
+          exp: "Ragam hias (ornamen dekoratif) adalah susunan pola berulang yang digubah untuk mempercantik benda pakai atau karya seni."
+        },
+        {
+          q: "Ragam hias yang terinspirasi dari dedaunan, akar sulur, dan bunga disebut ragam hias...",
+          options: ["Fauna", "Geometris", "Flora", "Figuratif"],
+          ans: 2,
+          exp: "Flora adalah motif yang mengambil obyek tumbuhan seperti daun, bunga melati, dan sulur."
+        },
+        {
+          q: "Burung cendrawasih, kerbau, dan ikan termasuk sumber inspirasi ragam hias jenis...",
+          options: ["Fauna", "Flora", "Geometris", "Teknologi"],
+          ans: 0,
+          exp: "Fauna adalah motif ragam hias yang menggubah bentuk satwa atau hewan."
+        },
+        {
+          q: "Garis lurus, lingkaran, segitiga, dan pilin berputar merupakan unsur ragam hias...",
+          options: ["Figuratif", "Geometris", "Fauna", "Flora"],
+          ans: 1,
+          exp: "Motif geometris merupakan ragam hias tertua yang tersusun dari bentuk-bentuk ukur matematika teratur."
+        },
+        {
+          q: "Ragam hias yang menggambar bentuk manusia atau wajah topeng dinamakan...",
+          options: ["Flora", "Figuratif", "Geometris", "Fauna"],
+          ans: 1,
+          exp: "Figuratif merujuk pada wujud sosok manusia, penari, prajurit adat, atau topeng leluhur."
+        },
+        {
+          q: "Batik motif 'Kawung' dari Jawa Tengah umumnya menyerupai potongan buah...",
+          options: ["Kelapa muda / Kolang-kaling", "Durian berduri", "Pisang raja", "Buah semangka"],
+          ans: 0,
+          exp: "Pola Kawung tersusun dari 4 lingkaran lonjong menyerupai buah aren atau kolang-kaling."
+        },
+        {
+          q: "Fungsi ragam hias yang bertujuan agar benda terlihat cantik dan indah dipandang mata adalah...",
+          options: ["Fungsi Konstruktif", "Fungsi Estetis", "Fungsi Simbolis", "Fungsi Ekonomi"],
+          ans: 1,
+          exp: "Estetis artinya berkaitan dengan keindahan (estetika) visual."
+        },
+        {
+          q: "Teknik menyederhanakan bentuk obyek nyata dari alam menjadi motif hias disebut...",
+          options: ["Stilisasi", "Fotografi", "Fotokopi", "Erosi"],
+          ans: 0,
+          exp: "Stilisasi adalah proses menggubah dan menyederhanakan obyek alam tanpa melupakan jati diri obyek tersebut."
+        },
+        {
+          q: "Ciri khas penyusunan motif ragam hias adalah dibuat secara...",
+          options: ["Berantakan dan acak-acakan", "Berulang dan berirama rapi", "Ditumpuk tanpa jeda", "Hanya satu titik kecil"],
+          ans: 1,
+          exp: "Ragam hias ditata dengan pola pengulangan (repetisi) yang selaras dan teratur."
+        },
+        {
+          q: "Benda sehari-hari berikut yang sering dihias dengan motif dekoratif adalah...",
+          options: ["Kain batik dan ukiran pintu", "Kaca jendela polos", "Kertas HVS kosong", "Lantai semen abu-abu"],
+          ans: 0,
+          exp: "Kain batik, sarung, piring keramik, dan ukiran gebyok pintu sangat lazim menggunakan ragam hias."
+        }
+      ],
+      sedang: [
+        {
+          q: "Ragam hias pada tiang penyangga rumah adat yang diukir untuk memperindah sekaligus menahan beban atap memiliki fungsi...",
+          options: ["Fungsi Estetis saja", "Fungsi Konstruktif", "Fungsi Keberuntungan", "Fungsi Mistis"],
+          ans: 1,
+          exp: "Fungsi konstruktif membuat ornamen tersebut tidak hanya hiasan, melainkan pengokoh struktur fisik bangunan."
+        },
+        {
+          q: "Motif batik Parang Rusak memiliki makna kesatria yang pantang menyerah. Ini adalah contoh ragam hias berfungsi...",
+          options: ["Konstruktif", "Simbolis", "Mekanik", "Ekologis"],
+          ans: 1,
+          exp: "Fungsi simbolis memuat makna filosofis, doa luhur, dan tatanan adat."
+        },
+        {
+          q: "Motif segitiga runcing berjejer yang sering dijumpai pada kain tumpal Betawi dan ujung kain songket disebut motif...",
+          options: ["Tumpal", "Pecah piring", "Kawung", "Truntum"],
+          ans: 0,
+          exp: "Motif Tumpal berbentuk segitiga runcing tegak atau terbalik, melambangkan konsep gunung atau kesuburan."
+        },
+        {
+          q: "Ukiran kepala kerbau 'Pa'tedong' pada tiang rumah adat Tongkonan suku Toraja termasuk kategori motif...",
+          options: ["Flora", "Fauna", "Geometris murni", "Figuratif"],
+          ans: 1,
+          exp: "Tedong berarti kerbau (fauna), hewan yang melambangkan kemakmuran dan status terhormat di Toraja."
+        },
+        {
+          q: "Mengapa seniman tradisional Nusantara banyak menggunakan motif flora dan fauna?",
+          options: [
+            "Karena masyarakat Nusantara hidup akrab dan menyatu dengan kekayaan alam",
+            "Karena seniman zaman dulu dilarang menggambar garis lurus",
+            "Hanya karena kebetulan tanpa ada arti apa-apa",
+            "Agar hemat biaya pewarna buatan"
+          ],
+          ans: 0,
+          exp: "Masyarakat Nusantara memiliki ikatan batin yang sangat dekat dengan alam semesta."
+        },
+        {
+          q: "Apa perbedaan mendasar antara seni lukis realis dengan seni dekoratif ragam hias?",
+          options: [
+            "Realis meniru obyek persis seperti foto; ragam hias menyederhanakannya menjadi pola indah",
+            "Realis menggunakan pensil warna; ragam hias tidak boleh pakai warna",
+            "Realis hanya boleh berbentuk bulat; ragam hias harus kotak",
+            "Keduanya sama persis tanpa ada perbedaan sedikit pun"
+          ],
+          ans: 0,
+          exp: "Seni lukis realis berusaha meniru kenyataan secara akurat, sementara ragam hias memanfaatkan stilisasi dan dekorasi."
+        },
+        {
+          q: "Motif ukiran kayu pada perisai perang suku Dayak Kalimantan sering memadukan bentuk garis meliuk dan mata topeng, yaitu kombinasi...",
+          options: ["Flora dan Hewan laut", "Geometris dan Figuratif", "Hanya batu kali", "Angka-angka acak"],
+          ans: 1,
+          exp: "Perisai Dayak memadukan garis pilin geometris dengan ornamen wajah figuratif penolak bala."
+        },
+        {
+          q: "Kain songket dari Palembang dan Minangkabau terkenal dengan kemilau benang emas yang membentuk ragam hias...",
+          options: ["Flora dan Geometris", "Mobil dan helikopter", "Hanya titik hitam", "Lukisan gedung bertingkat"],
+          ans: 0,
+          exp: "Songket didominasi oleh bunga cengkeh, pucuk rebung (flora), serta pola belah ketupat geometris berbenang emas."
+        },
+        {
+          q: "Penyusunan ragam hias di mana bagian kanan dan bagian kiri tampak sama persis seimbang disebut komposisi...",
+          options: ["Asimetris", "Simetris", "Acak-acakan", "Zigzag"],
+          ans: 1,
+          exp: "Keseimbangan simetris menghasilkan kesan resmi, kokoh, dan berwibawa."
+        },
+        {
+          q: "Manakah pasangan motif dan asal daerah yang PALING TEPAT?",
+          options: [
+            "Mega Mendung - Cirebon",
+            "Batik Parang - Papua",
+            "Ukiran Asmat - Jawa Barat",
+            "Batik Kawung - Sulawesi Tenggara"
+          ],
+          ans: 0,
+          exp: "Mega Mendung adalah motif awan khas karya seniman batik Cirebon."
+        }
+      ],
+      sulit: [
+        {
+          q: "Motif Batik Mega Mendung memiliki gradasi 7 lapisan warna awan. Makna filosofis mendalam dari motif ini adalah...",
+          options: [
+            "Manusia harus mampu meredam amarah dan selalu bersikap tenang saat situasi memanas",
+            "Ajakan untuk segera pulang ke rumah ketika hari mulai turun hujan",
+            "Larangan terbang menggunakan burung elang di langit",
+            "Simbol jumlah anggota keluarga raja yang harus selalu tujuh orang"
+          ],
+          ans: 0,
+          exp: "Mega Mendung bermakna awan sejuk penyejuk suasana, melambangkan kepemimpinan yang sabar dan tidak lekas marah."
+        },
+        {
+          q: "Pada ukiran dinding Candi Borobudur dan Prambanan, ornamen kepala raksasa bertaring di atas pintu gerbang dinamakan...",
+          options: ["Kala / Makara", "Garuda Pancasila", "Anoman", "Hanoman"],
+          ans: 0,
+          exp: "Kala Makara adalah ornamen figuratif sakral pelindung pintu dari energi buruk dan simbol waktu."
+        },
+        {
+          q: "Stilisasi pada motif Ragam Hias Pucuk Rebung (bambu muda) pada kain Melayu Riau melambangkan nasihat luhur bahwa...",
+          options: [
+            "Hidup manusia harus berguna sejak usia muda hingga tua seperti tanaman bambu",
+            "Bambu harus ditebang habis sebelum menjadi pohon besar",
+            "Hutan bambu tempat bersembunyi prajurit perang",
+            "Batang bambu hanya cocok untuk mainan meriam lodong"
+          ],
+          ans: 0,
+          exp: "Rebung ketika muda manis dimakan sayur, ketika tua kokoh menjadi tiang rumah; manusia hendaknya selalu berguna."
+        },
+        {
+          q: "Sebuah vas keramik memiliki pegangan berbentuk naga melingkar yang membantu seseorang mengangkat vas tersebut dengan kokoh. Ini perpaduan fungsi...",
+          options: [
+            "Estetis, Simbolis, sekaligus Konstruktif",
+            "Hanya fungsi ekonomi murni",
+            "Bukan ragam hias melainkan alat dapur biasa",
+            "Hanya fungsi mainan anak-anak"
+          ],
+          ans: 0,
+          exp: "Naga memperindah vas (estetis), melambangkan kemakmuran air (simbolis), dan menjadi pegangan kuat (konstruktif)."
+        },
+        {
+          q: "Pola ornamen 'Meander' dan 'Swastika' merupakan pola ragam hias geometris yang sudah ada sejak zaman prasejarah logam Neolitikum. Ciri garis meander adalah...",
+          options: [
+            "Garis siku berbelit-belit yang saling bertaut bersambungan",
+            "Garis putus-putus berbentuk lingkaran balon",
+            "Garis lurus tunggal tanpa belokan",
+            "Titik-titik air hujan yang jatuh lurus"
+          ],
+          ans: 0,
+          exp: "Meander berupa garis lurus meliku siku berulang membentuk bingkai tepi kain atau bejana perunggu kuno."
+        },
+        {
+          q: "Batik motif 'Truntum' diciptakan oleh Kanjeng Ratu Kencana yang memandang bintang gemerlap di langit malam. Makna simbolis Truntum adalah...",
+          options: [
+            "Cinta kasih yang tulus dan selalu bersemi kembali (tumaruntum)",
+            "Kekayaan tambang emas yang tak pernah habis",
+            "Kegelapan malam yang menakutkan penjahat",
+            "Kerinduan memakan buah duku yang manis"
+          ],
+          ans: 0,
+          exp: "Truntum (bunga bintang kecil) dipakai orang tua pengantin sebagai simbol cinta kasih yang terus mekar."
+        },
+        {
+          q: "Mengapa ragam hias figuratif berupa patung nenek moyang suku Asmat di Papua memiliki posisi tubuh berjongkok dan tangan memeluk lutut?",
+          options: [
+            "Sebagai simbol janin bayi dalam kandungan ibu yang siap menyongsong kehidupan abadi",
+            "Karena senimannya kesulitan mengukir kaki yang sedang berdiri",
+            "Agar patung tersebut muat disimpan di dalam tas saku",
+            "Sebagai simbol orang yang sedang kedinginan di pinggir sungai"
+          ],
+          ans: 0,
+          exp: "Sikap berjongkok melambangkan cikal bakal manusia, kerendahan hati, dan hubungan erat dengan rahim leluhur."
+        },
+        {
+          q: "Dalam pembelajaran berdiferensiasi dan penciptaan ragam hias, langkah awal yang benar sebelum mulai mewarnai adalah...",
+          options: [
+            "Menentukan tema, membuat bidang batas bidang, dan menyusun pola kisi-kisi modul dasar",
+            "Langsung menuang cat minyak ke seluruh permukaan kertas",
+            "Membeli bingkai pigura sebelum tahu apa yang mau digambar",
+            "Menghapus seluruh garis tepi dan membiarkannya kosong"
+          ],
+          ans: 0,
+          exp: "Merancang ragam hias terstruktur diawali penentuan tema motif, penarikan modul geometris dasar, baru pengulangan pola."
+        },
+        {
+          q: "Karakter ragam hias pesisir (seperti Pekalongan dan Madura) memiliki corak warna yang cenderung terang dan cerah (merah, hijau muda, kuning). Hal ini dipengaruhi oleh...",
+          options: [
+            "Karakter masyarakat pesisir yang terbuka, dinamis, dan terbiasa dengan akulturasi budaya luar",
+            "Kurangnya pasokan lumpur coklat di daerah pantai",
+            "Larangan dari raja untuk memakai warna coklat",
+            "Udara pantai yang dingin sehingga butuh warna panas"
+          ],
+          ans: 0,
+          exp: "Batik pesisiran dipengaruhi keterbukaan warga terhadap pedagang Tiongkok, Arab, dan Belanda dengan warna cerah ceria."
+        },
+        {
+          q: "Apa dampak positif mempelajari dan melestarikan seni ragam hias bagi generasi pelajar Indonesia saat ini?",
+          options: [
+            "Menumbuhkan rasa bangga pada identitas bangsa dan meningkatkan kreativitas bernilai ekonomi global",
+            "Hanya sekadar menghabiskan waktu luang saat jam kosong di sekolah",
+            "Agar tidak perlu mempelajari mata pelajaran yang lain",
+            "Membuat seluruh benda di rumah harus dicoret-coret dengan spidol"
+          ],
+          ans: 0,
+          exp: "Ragam hias memperkuat karakter Profil Pelajar Pancasila: berkebinekaan global, mandiri, dan kreatif."
+        }
+      ]
+    };
+
+    let currentQuizLevel = 'mudah';
+    let currentQuestionIdx = 0;
+    let quizScore = 0;
+    let quizLevelQuestions = [];
+
+    function startQuizLevel(lvl) {
+      playSound('pop');
+      currentQuizLevel = lvl;
+      currentQuestionIdx = 0;
+      quizScore = 0;
+      quizLevelQuestions = [...quizDatabase[lvl]];
+
+      // UI updates for level tabs
+      document.querySelectorAll('.quiz-lvl-btn').forEach(b => {
+        b.classList.remove('active', 'bg-emerald-500', 'bg-amber-500', 'bg-rose-500', 'text-white', 'shadow-sm');
+        b.classList.add('text-slate-600');
+      });
+      const activeBtn = document.getElementById(`quiz-lvl-btn-${lvl}`);
+      if (activeBtn) {
+        let colorClass = lvl === 'mudah' ? 'bg-emerald-500' : lvl === 'sedang' ? 'bg-amber-500' : 'bg-rose-500';
+        activeBtn.classList.add('active', colorClass, 'text-white', 'shadow-sm');
+        activeBtn.classList.remove('text-slate-600');
+      }
+
+      document.getElementById('quiz-active-box').classList.remove('hidden');
+      document.getElementById('quiz-result-box').classList.add('hidden');
+
+      renderQuizQuestion();
+    }
+
+    function renderQuizQuestion() {
+      const qData = quizLevelQuestions[currentQuestionIdx];
+      const totalQ = quizLevelQuestions.length;
+
+      // Update counters
+      document.getElementById('quiz-badge-level').innerText = `Level: ${currentQuizLevel.toUpperCase()}`;
+      document.getElementById('quiz-progress-text').innerText = `Soal ${currentQuestionIdx + 1} dari ${totalQ}`;
+      document.getElementById('quiz-score-val').innerText = quizScore;
+      document.getElementById('quiz-progress-bar').style.width = `${((currentQuestionIdx + 1) / totalQ) * 100}%`;
+
+      // Texts
+      document.getElementById('quiz-question-type').innerText = `Tingkat ${currentQuizLevel.toUpperCase()} • Soal Pilihan Ganda`;
+      document.getElementById('quiz-question-text').innerText = qData.q;
+
+      // Render Options
+      const optionsBox = document.getElementById('quiz-options-container');
+      optionsBox.innerHTML = '';
+
+      qData.options.forEach((optText, idx) => {
+        const btn = document.createElement('button');
+        btn.className = `option-btn w-full p-4 rounded-2xl border-2 border-slate-200 bg-white hover:border-amber-400 hover:bg-amber-50 text-left font-semibold text-xs sm:text-sm text-malam transition flex items-center space-x-3 shadow-sm`;
+        btn.innerHTML = `
+          <span class="w-8 h-8 rounded-xl bg-amber-100 border border-amber-300 text-amber-800 flex items-center justify-center font-bold text-xs flex-shrink-0">
+            ${String.fromCharCode(65 + idx)}
+          </span>
+          <span class="flex-1">${optText}</span>
+        `;
+        btn.onclick = () => selectQuizOption(idx);
+        optionsBox.appendChild(btn);
+      });
+
+      // Reset feedback and next button
+      const feedbackBox = document.getElementById('quiz-feedback-box');
+      feedbackBox.classList.add('hidden');
+      document.getElementById('quiz-next-btn').classList.add('hidden');
+    }
+
+    function selectQuizOption(selectedIdx) {
+      const qData = quizLevelQuestions[currentQuestionIdx];
+      const optionButtons = document.querySelectorAll('.option-btn');
+      optionButtons.forEach(btn => btn.disabled = true);
+
+      const feedbackBox = document.getElementById('quiz-feedback-box');
+      const iconEl = document.getElementById('feedback-icon');
+      const titleEl = document.getElementById('feedback-title');
+      const expEl = document.getElementById('feedback-explanation');
+
+      if (selectedIdx === qData.ans) {
+        playSound('correct');
+        quizScore += 10;
+        document.getElementById('quiz-score-val').innerText = quizScore;
+
+        optionButtons[selectedIdx].classList.add('bg-emerald-100', 'border-emerald-500', 'text-emerald-900');
+        feedbackBox.className = 'p-4 rounded-2xl border-2 bg-emerald-50 border-emerald-300 text-emerald-900 mb-6';
+        iconEl.innerHTML = '🎉';
+        titleEl.innerText = 'Jawabanmu Benar Sekali!';
+      } else {
+        playSound('wrong');
+        optionButtons[selectedIdx].classList.add('bg-rose-100', 'border-rose-400', 'text-rose-900');
+        optionButtons[qData.ans].classList.add('bg-emerald-100', 'border-emerald-500', 'text-emerald-900');
+
+        feedbackBox.className = 'p-4 rounded-2xl border-2 bg-rose-50 border-rose-300 text-rose-900 mb-6';
+        iconEl.innerHTML = '💡';
+        titleEl.innerText = 'Kurang Tepat, Jangan Patah Semangat!';
+      }
+
+      expEl.innerText = qData.exp;
+      feedbackBox.classList.remove('hidden');
+
+      const nextBtn = document.getElementById('quiz-next-btn');
+      nextBtn.classList.remove('hidden');
+      if (currentQuestionIdx === quizLevelQuestions.length - 1) {
+        nextBtn.innerHTML = `<span>Lihat Hasil Akhir</span> <i class="fa-solid fa-trophy"></i>`;
+      } else {
+        nextBtn.innerHTML = `<span>Lanjut Soal Berikutnya</span> <i class="fa-solid fa-arrow-right"></i>`;
+      }
+    }
+
+    function nextQuizQuestion() {
+      playSound('click');
+      if (currentQuestionIdx < quizLevelQuestions.length - 1) {
+        currentQuestionIdx++;
+        renderQuizQuestion();
+      } else {
+        finishQuiz();
+      }
+    }
+
+    function finishQuiz() {
+      playSound('fanfare');
+      confetti({
+        particleCount: 120,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+
+      document.getElementById('quiz-active-box').classList.add('hidden');
+      const resultBox = document.getElementById('quiz-result-box');
+      resultBox.classList.remove('hidden');
+
+      document.getElementById('quiz-final-score').innerText = quizScore;
+      document.getElementById('quiz-stats-summary').innerText = `Menjawab Benar ${quizScore / 10} dari 10 Soal Level ${currentQuizLevel.toUpperCase()}`;
+
+      const motivText = document.getElementById('quiz-motivation-text');
+      if (quizScore >= 80) {
+        motivText.innerText = "Luar Biasa Hebat! Kamu sudah menguasai materi Seni Dekoratif & Ragam Hias dengan sangat membanggakan!";
+      } else if (quizScore >= 50) {
+        motivText.innerText = "Bagus Sekali! Tingkatkan lagi sedikit latihanmu dan jadilah pelestari seni budaya Nusantara!";
+      } else {
+        motivText.innerText = "Tetap Semangat! Belajar adalah proses yang seru. Baca kembali materi dan coba lagi ya!";
+      }
+    }
+
+    function restartCurrentQuiz() {
+      startQuizLevel(currentQuizLevel);
+    }
+
+    function generateCertificateModal() {
+      playSound('fanfare');
+      const nameInput = document.getElementById('cert-student-name').value.trim();
+      const displayName = nameInput ? nameInput : "Siswa Berprestasi";
+
+      document.getElementById('cert-display-name').innerText = displayName;
+      document.getElementById('cert-display-score').innerText = quizScore;
+
+      const today = new Date();
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      document.getElementById('cert-display-date').innerText = today.toLocaleDateString('id-ID', options);
+
+      document.getElementById('cert-modal').classList.remove('hidden');
+      document.getElementById('cert-modal').classList.add('flex');
+
+      confetti({
+        particleCount: 80,
+        spread: 60,
+        origin: { y: 0.5 }
+      });
+    }
+
+    function closeCertificateModal() {
+      playSound('click');
+      document.getElementById('cert-modal').classList.add('hidden');
+      document.getElementById('cert-modal').classList.remove('flex');
+    }
+
+    /* ==========================================================================
+       6. ARENA GAMES (SORTING MOTIF & MEMORY MATCH)
+       ========================================================================== */
+    function switchGameMode(mode) {
+      playSound('pop');
+      document.querySelectorAll('.game-tab-btn').forEach(b => {
+        b.classList.remove('active', 'bg-white', 'text-lavender', 'shadow-sm');
+        b.classList.add('text-slate-600');
+      });
+      const activeBtn = document.getElementById(`game-tab-${mode}`);
+      if (activeBtn) {
+        activeBtn.classList.add('active', 'bg-white', 'text-lavender', 'shadow-sm');
+        activeBtn.classList.remove('text-slate-600');
+      }
+
+      document.querySelectorAll('.game-view').forEach(v => v.classList.add('hidden'));
+      document.getElementById(`game-mode-${mode}`).classList.remove('hidden');
+    }
+
+    /* --- Sorting Game Logic --- */
+    const sortItemsData = [
+      { id: 's1', name: 'Daun Pakis Melingkar', category: 'flora', icon: 'fa-leaf' },
+      { id: 's2', name: 'Burung Cendrawasih', category: 'fauna', icon: 'fa-dove' },
+      { id: 's3', name: 'Bunga Melati Merekah', category: 'flora', icon: 'fa-spa' },
+      { id: 's4', name: 'Pola Tumpal Segitiga', category: 'geometris', icon: 'fa-play' },
+      { id: 's5', name: 'Topeng Wajah Betawi', category: 'figuratif', icon: 'fa-masks-theater' },
+      { id: 's6', name: 'Kerbau Pa’tedong Toraja', category: 'fauna', icon: 'fa-hippo' },
+      { id: 's7', name: 'Pola Kawung Lonjong', category: 'geometris', icon: 'fa-circle-nodes' },
+      { id: 's8', name: 'Sosok Prajurit Asmat', category: 'figuratif', icon: 'fa-person' }
+    ];
+
+    let selectedSortCard = null;
+    let basketCounts = { flora: 0, fauna: 0, geometris: 0, figuratif: 0 };
+    let sortCorrectCount = 0;
+
+    function initSortingGame() {
+      selectedSortCard = null;
+      basketCounts = { flora: 0, fauna: 0, geometris: 0, figuratif: 0 };
+      sortCorrectCount = 0;
+
+      updateBasketCounters();
+      document.getElementById('sort-correct-count').innerText = 0;
+      document.getElementById('sort-remaining-count').innerText = sortItemsData.length;
+
+      const pool = document.getElementById('sort-cards-pool');
+      pool.innerHTML = '';
+
+      // Shuffle array
+      const shuffled = [...sortItemsData].sort(() => Math.random() - 0.5);
+
+      shuffled.forEach(item => {
+        const card = document.createElement('div');
+        card.id = `sort-item-${item.id}`;
+        card.className = 'sort-item-card cursor-pointer p-3 rounded-2xl bg-white border-2 border-slate-300 hover:border-lavender shadow-sm flex items-center space-x-2 transition transform hover:scale-105';
+        card.innerHTML = `
+          <div class="w-9 h-9 rounded-xl bg-purple-100 text-lavender flex items-center justify-center text-base flex-shrink-0">
+            <i class="fa-solid ${item.icon}"></i>
+          </div>
+          <div class="text-xs font-bold text-malam leading-tight">${item.name}</div>
+        `;
+        card.onclick = () => selectSortItem(item);
+        pool.appendChild(card);
+      });
+    }
+
+    function selectSortItem(item) {
+      playSound('pop');
+      selectedSortCard = item;
+      document.querySelectorAll('.sort-item-card').forEach(c => {
+        c.classList.remove('ring-4', 'ring-lavender', 'bg-purple-50');
+      });
+      const el = document.getElementById(`sort-item-${item.id}`);
+      if (el) {
+        el.classList.add('ring-4', 'ring-lavender', 'bg-purple-50');
+      }
+      showToast('Kartu Terpilih', `Sekarang klik keranjang tujuan untuk '${item.name}'!`, 'fa-hand-pointer');
+    }
+
+    function depositToBasket(basketCategory) {
+      if (!selectedSortCard) {
+        showToast('Pilih Kartu Dulu', 'Klik salah satu kartu di atas sebelum memilih keranjang!', 'fa-circle-exclamation');
+        return;
+      }
+
+      if (selectedSortCard.category === basketCategory) {
+        playSound('correct');
+        basketCounts[basketCategory]++;
+        sortCorrectCount++;
+
+        const cardEl = document.getElementById(`sort-item-${selectedSortCard.id}`);
+        if (cardEl) {
+          cardEl.remove();
+        }
+
+        updateBasketCounters();
+        document.getElementById('sort-correct-count').innerText = sortCorrectCount;
+        document.getElementById('sort-remaining-count').innerText = sortItemsData.length - sortCorrectCount;
+
+        showToast('Benar!', `'${selectedSortCard.name}' tepat masuk ke keranjang ${basketCategory.toUpperCase()}!`, 'fa-circle-check');
+        selectedSortCard = null;
+
+        if (sortCorrectCount === sortItemsData.length) {
+          playSound('fanfare');
+          confetti({ particleCount: 100, spread: 70 });
+          showToast('Misi Selesai!', 'Hebat! Semua kartu ragam hias berhasil dipilah sempurna!', 'fa-trophy');
+        }
+      } else {
+        playSound('wrong');
+        showToast('Kurang Tepat', `'${selectedSortCard.name}' bukan bagian dari kelompok ${basketCategory.toUpperCase()}. Ayo coba keranjang lain!`, 'fa-triangle-exclamation');
+      }
+    }
+
+    function updateBasketCounters() {
+      ['flora', 'fauna', 'geometris', 'figuratif'].forEach(cat => {
+        const el = document.getElementById(`basket-${cat}-count`);
+        if (el) el.innerText = `${basketCounts[cat]} Item`;
+      });
+    }
+
+    /* --- Memory Match Game Logic --- */
+    const memoryThemes = [
+      { id: 'm1', label: 'Batik Kawung', icon: 'fa-circle-nodes', color: 'text-amber-500' },
+      { id: 'm2', label: 'Sulur Daun', icon: 'fa-leaf', color: 'text-toska' },
+      { id: 'm3', label: 'Cendrawasih', icon: 'fa-dove', color: 'text-ceri' },
+      { id: 'm4', label: 'Topeng Dayak', icon: 'fa-masks-theater', color: 'text-lavender' },
+      { id: 'm5', label: 'Pucuk Rebung', icon: 'fa-play', color: 'text-samudra' },
+      { id: 'm6', label: 'Ikan Koi', icon: 'fa-fish', color: 'text-jeruk' }
+    ];
+
+    let memoryCards = [];
+    let flippedCards = [];
+    let memoryMoves = 0;
+    let memoryMatches = 0;
+    let lockMemoryBoard = false;
+
+    function initMemoryGame() {
+      const grid = document.getElementById('memory-grid');
+      grid.innerHTML = '';
+      flippedCards = [];
+      memoryMoves = 0;
+      memoryMatches = 0;
+      lockMemoryBoard = false;
+
+      document.getElementById('memory-moves').innerText = 0;
+      document.getElementById('memory-matches').innerText = '0 / 6';
+
+      // Create 6 pairs = 12 cards
+      memoryCards = [...memoryThemes, ...memoryThemes]
+        .map((item, idx) => ({ ...item, uniqueId: `mem_${idx}` }))
+        .sort(() => Math.random() - 0.5);
+
+      memoryCards.forEach((c) => {
+        const cardBox = document.createElement('div');
+        cardBox.id = c.uniqueId;
+        cardBox.className = 'memory-card-item h-28 sm:h-32 rounded-2xl bg-amber-400 border-2 border-amber-500 shadow-md cursor-pointer flex items-center justify-center text-white transition-all transform hover:scale-105';
+        cardBox.innerHTML = `
+          <div class="card-inner w-full h-full flex flex-col items-center justify-center p-2 text-center">
+            <i class="fa-solid fa-question text-3xl"></i>
+          </div>
+        `;
+        cardBox.onclick = () => flipMemoryCard(c, cardBox);
+        grid.appendChild(cardBox);
+      });
+    }
+
+    function flipMemoryCard(cardData, cardElement) {
+      if (lockMemoryBoard) return;
+      if (flippedCards.length === 1 && flippedCards[0].uniqueId === cardData.uniqueId) return;
+
+      playSound('pop');
+      cardElement.classList.remove('bg-amber-400', 'border-amber-500');
+      cardElement.classList.add('bg-white', 'border-purple-400');
+      cardElement.innerHTML = `
+        <div class="card-inner w-full h-full flex flex-col items-center justify-center p-2 text-center animate-fade">
+          <i class="fa-solid ${cardData.icon} text-3xl sm:text-4xl ${cardData.color} mb-1"></i>
+          <span class="text-[10px] sm:text-xs font-bold text-malam leading-none">${cardData.label}</span>
+        </div>
+      `;
+
+      flippedCards.push({ data: cardData, el: cardElement });
+
+      if (flippedCards.length === 2) {
+        memoryMoves++;
+        document.getElementById('memory-moves').innerText = memoryMoves;
+        checkMemoryMatch();
+      }
+    }
+
+    function checkMemoryMatch() {
+      const [c1, c2] = flippedCards;
+      if (c1.data.id === c2.data.id) {
+        playSound('correct');
+        c1.el.classList.add('ring-4', 'ring-emerald-400', 'pointer-events-none');
+        c2.el.classList.add('ring-4', 'ring-emerald-400', 'pointer-events-none');
+        memoryMatches++;
+        document.getElementById('memory-matches').innerText = `${memoryMatches} / 6`;
+        flippedCards = [];
+
+        if (memoryMatches === 6) {
+          playSound('fanfare');
+          confetti({ particleCount: 110, spread: 75 });
+          showToast('Juara Daya Ingat!', 'Kamu menemukan semua pasangan motif ragam hias!', 'fa-trophy');
+        }
+      } else {
+        playSound('wrong');
+        lockMemoryBoard = true;
+        setTimeout(() => {
+          [c1, c2].forEach(c => {
+            c.el.classList.add('bg-amber-400', 'border-amber-500');
+            c.el.classList.remove('bg-white', 'border-purple-400');
+            c.el.innerHTML = `
+              <div class="card-inner w-full h-full flex flex-col items-center justify-center p-2 text-center">
+                <i class="fa-solid fa-question text-3xl"></i>
+              </div>
+            `;
+          });
+          flippedCards = [];
+          lockMemoryBoard = false;
+        }, 900);
+      }
+    }
+
+    /* ==========================================================================
+       7. PAPAN REFLEKSI KOLABORATIF (LOCAL STORAGE + GOOGLE APPS SCRIPT API HOOK)
+       ========================================================================== */
+    let selectedStickyBg = '#fff9c4';
+    const GOOGLE_SHEET_GAS_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbx_EXAMPLE_GAS_ENDPOINT/exec";
+
+    // Initial seed reflection notes for Grade 4 peers
+    let reflectionsList = [
+      {
+        id: 1,
+        name: "Alya Putri (Siswa 4A)",
+        mood: "Senang Sekali! 😄",
+        text: "Aku baru tahu kalau motif Mega Mendung artinya awan yang bikin hati kita tenang dan tidak cepat marah!",
+        bg: "#fff9c4",
+        date: "Hari Ini"
+      },
+      {
+        id: 2,
+        name: "Rizky Pratama (Siswa 4B)",
+        mood: "Kagum Budaya 🤩",
+        text: "Ternyata rumah Toraja pakai motif kepala kerbau karena kerbau lambang kemakmuran dan kehormatan.",
+        bg: "#bbdefb",
+        date: "Hari Ini"
+      },
+      {
+        id: 3,
+        name: "Nabila Zahra (Siswa 4A)",
+        mood: "Ingin Berkarya 🎨",
+        text: "Seru banget mencoba stempel daun dan kawung di studio virtual! Nanti di rumah mau coba bikin batik jemputan.",
+        bg: "#ffcdd2",
+        date: "Hari Ini"
+      }
+    ];
+
+    function setStickyColor(colorHex) {
+      playSound('click');
+      selectedStickyBg = colorHex;
+    }
+
+    function renderReflectionBoard() {
+      const container = document.getElementById('sticky-notes-container');
+      container.innerHTML = '';
+
+      reflectionsList.forEach(item => {
+        const note = document.createElement('div');
+        note.className = 'sticky-note p-4 rounded-2xl border border-black/10 flex flex-col justify-between transition transform hover:-rotate-1 hover:scale-102';
+        note.style.backgroundColor = item.bg;
+        note.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between text-xs font-bold text-slate-700 pb-1.5 border-b border-black/10 mb-2">
+              <span class="font-heading truncate max-w-[130px]">${item.name}</span>
+              <span class="text-sm">${item.mood.split(' ')[1] || '✨'}</span>
+            </div>
+            <p class="text-xs text-slate-800 leading-relaxed font-semibold">
+              "${item.text}"
+            </p>
+          </div>
+          <div class="mt-3 pt-2 text-[10px] text-slate-500 font-bold flex justify-between">
+            <span>${item.mood.split(' ')[0]}</span>
+            <span>${item.date}</span>
+          </div>
+        `;
+        container.appendChild(note);
+      });
+
+      document.getElementById('sticky-count').innerText = reflectionsList.length;
+    }
+
+    function submitReflection() {
+      const name = document.getElementById('refl-name').value.trim();
+      const message = document.getElementById('refl-message').value.trim();
+      const moodEl = document.querySelector('input[name="refl-mood"]:checked');
+      const mood = moodEl ? moodEl.value : "Senang 😄";
+
+      if (!name || !message) {
+        playSound('wrong');
+        showToast('Kolom Belum Lengkap', 'Mohon tulis namamu dan hal baru yang kamu pelajari ya!', 'fa-triangle-exclamation');
+        return;
+      }
+
+      playSound('fanfare');
+      const newEntry = {
+        id: Date.now(),
+        name: name,
+        mood: mood,
+        text: message,
+        bg: selectedStickyBg,
+        date: "Baru saja"
+      };
+
+      reflectionsList.unshift(newEntry);
+      renderReflectionBoard();
+
+      // Clear input fields
+      document.getElementById('refl-name').value = '';
+      document.getElementById('refl-message').value = '';
+
+      showToast('Catatan Ditempel!', 'Refleksimu sudah terpajang di dinding kelas virtual!', 'fa-note-sticky');
+      confetti({ particleCount: 50, spread: 60 });
+
+      // Background payload to Google Apps Script / Google Spreadsheet
+      try {
+        if (GOOGLE_SHEET_GAS_WEBAPP_URL && !GOOGLE_SHEET_GAS_WEBAPP_URL.includes("EXAMPLE")) {
+          fetch(GOOGLE_SHEET_GAS_WEBAPP_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              timestamp: new Date().toISOString(),
+              nama: name,
+              perasaan: mood,
+              refleksi: message,
+              mataPelajaran: "Seni Rupa Kelas 4 - Seni Dekoratif"
+            })
+          }).catch(err => console.log('Spreadsheet sync queued offline'));
+        }
+      } catch (err) {
+        console.log('Online sheet log skipped in local environment');
+      }
+    }
+
+    function clearAllReflections() {
+      playSound('click');
+      reflectionsList = [];
+      renderReflectionBoard();
+      showToast('Papan Direset', 'Papan refleksi telah dikosongkan.', 'fa-trash-can');
+    }
+
+    /* ==========================================================================
+       8. INITIALIZATION ON WINDOW LOAD
+       ========================================================================== */
+    window.onload = function() {
+      // Initialize quizzes, simulation, games, and reflections
+      startQuizLevel('mudah');
+      initStudioCanvas();
+      initSortingGame();
+      initMemoryGame();
+      renderReflectionBoard();
+
+      // Show welcome toast
+      setTimeout(() => {
+        showToast('Selamat Datang di Sahabat RUMPI!', 'Yuk jelajahi Seni Dekoratif & Ragam Hias Nusantara.', 'fa-shapes');
+      }, 700);
+    };
+  </script>
+</body>
+</html>
